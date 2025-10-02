@@ -54,7 +54,9 @@ public class GeneticAlgorithm {
 
                     List<Chromosome> initialPopulation = new ArrayList<>();
                     for (Chromosome c : pop.getChromosomes()) {
-                        initialPopulation.add(copyOf(c));
+                        Chromosome copy = copyOf(c);
+                        RoutesRepairer.repair(copy);
+                        initialPopulation.add(copy);
                     }
 
                     ToDoubleFunction<Chromosome> fitnessFn = chromosome -> {
@@ -68,7 +70,7 @@ public class GeneticAlgorithm {
                             .max(Comparator.comparingDouble(c -> c.fitness))
                             .orElse(null);
 
-                    if (best == null) {
+                    if (best == null || best.route.isEmpty()) {
                         break;
                     }
 
@@ -227,7 +229,9 @@ public class GeneticAlgorithm {
                 List<Chromosome> sorted = new ArrayList<>(population);
                 sorted.sort(Comparator.comparingDouble((Chromosome c) -> c.fitness).reversed());
                 for (int i = 0; i < eliteCount && next.size() < popSize && i < sorted.size(); i++) {
-                    next.add(copyOf(sorted.get(i)));
+                    Chromosome eliteCopy = copyOf(sorted.get(i));
+                    RoutesRepairer.repair(eliteCopy);
+                    next.add(eliteCopy);
                 }
             }
 
@@ -247,6 +251,7 @@ public class GeneticAlgorithm {
                 }
                 mutateSwap(child, params.pMutation);
                 if (child != null) {
+                    RoutesRepairer.repair(child);
                     next.add(child);
                 }
             }
@@ -269,6 +274,7 @@ public class GeneticAlgorithm {
         }
         Chromosome copy = new Chromosome(c.route);
         copy.fitness = c.fitness;
+        copy.setStructurallyFeasible(c.isStructurallyFeasible());
         return copy;
     }
 
@@ -293,8 +299,7 @@ public class GeneticAlgorithm {
             best = Math.max(best, fitness);
             worst = Math.min(worst, fitness);
             sum += fitness;
-            // Convención actual: fitness positivo indica soluciones factibles; penalizaciones dejan fitness <= 0.
-            if (fitness > 0) {
+            if (RoutesRepairer.isFeasible(chromosome, planningState)) {
                 feasible++;
             }
         }

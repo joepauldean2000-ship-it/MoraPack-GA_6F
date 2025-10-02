@@ -6,9 +6,26 @@ import java.util.*;
 public class Chromosome {
     List<Vuelo> route;
     double fitness;
+    private boolean structurallyFeasible = true;
 
     public Chromosome(List<Vuelo> route) {
         this.route = new ArrayList<>(route);
+    }
+
+    public List<Vuelo> getRoute() {
+        return route;
+    }
+
+    public void setRoute(List<Vuelo> route) {
+        this.route = new ArrayList<>(route);
+    }
+
+    public boolean isStructurallyFeasible() {
+        return structurallyFeasible && !route.isEmpty();
+    }
+
+    public void setStructurallyFeasible(boolean structurallyFeasible) {
+        this.structurallyFeasible = structurallyFeasible;
     }
 
     // Evaluación con todas las reglas que ya cumple ACO
