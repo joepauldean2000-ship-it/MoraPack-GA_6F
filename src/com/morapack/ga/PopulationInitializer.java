@@ -79,5 +79,55 @@ public final class PopulationInitializer {
 
         return population;
     }
+
+    public static List<Chromosome> initForBatch(List<Pedido> batch,
+                                                PlanningState planningState,
+                                                BusinessRules businessRules,
+                                                GAParams params,
+                                                GraphVuelos graph,
+                                                FlightCache cache,
+                                                Heuristic heuristic,
+                                                Random rnd) {
+        if (batch == null || batch.isEmpty() || graph == null || cache == null || rnd == null) {
+            return Collections.emptyList();
+        }
+        int populationSize = params != null && params.popSize > 0 ? params.popSize : Math.max(20, batch.size() * 5);
+        List<Chromosome> population = new ArrayList<>(populationSize);
+        int greedyTarget = (int) Math.ceil(populationSize * 0.35);
+        int attempts = 0;
+        int maxAttempts = Math.max(populationSize * 10, 60);
+
+        while (population.size() < greedyTarget && attempts < maxAttempts) {
+            attempts++;
+            if (heuristic == null) {
+                break;
+            }
+            Pedido pedido = batch.get(rnd.nextInt(batch.size()));
+            Chromosome greedy = heuristic.buildGreedy(pedido, graph, planningState, cache);
+            if (greedy == null) {
+                continue;
+            }
+            RoutesRepairer.repair(greedy);
+            greedy.fitness = Double.NaN;
+            if (greedy.isStructurallyFeasible()) {
+                population.add(greedy);
+            }
+        }
+
+        while (population.size() < populationSize && attempts < maxAttempts) {
+            attempts++;
+            Chromosome randomChromosome = Chromosome.randomInit(batch, graph, planningState, cache, rnd);
+            if (randomChromosome == null) {
+                continue;
+            }
+            RoutesRepairer.repair(randomChromosome);
+            randomChromosome.fitness = Double.NaN;
+            if (randomChromosome.isStructurallyFeasible()) {
+                population.add(randomChromosome);
+            }
+        }
+
+        return population;
+    }
 }
 

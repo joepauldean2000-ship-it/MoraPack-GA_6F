@@ -3,6 +3,8 @@ package com.morapack.ga;
 public final class GAParams {
     public int popSize, generations, tournamentK;
     public double pCrossover, pMutation, elitism;
+    public boolean batchingEnabled = true;
+    public long batchWindowMin = 120;
 
     public GAParams(int popSize, int generations, int tournamentK,
                     double pCrossover, double pMutation, double elitism) {

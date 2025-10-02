@@ -33,6 +33,20 @@ public class GeneticAlgorithm {
     private final PlanLogger logger;
     private final Random random = new Random();
     private long rngSeed;
+    private FlightCache cache;
+    private GraphVuelos graph;
+    private Heuristic greedyHeuristic;
+    private Map<String, Aeropuerto> aeropuertos;
+    private List<Vuelo> vuelosDisponibles;
+    private GaMetricsCsv metricsCsv;
+    private BusinessRules currentRules;
+    private GAParams currentParams;
+    private PrintWriter assignmentWriter;
+    private boolean assignmentHeaderWritten;
+    private int totalSolicitados;
+    private int totalAsignados;
+    private int totalPendientes;
+    private int pedidosProcesados;
 
     public GeneticAlgorithm(PlanningState planningState, SimClock clock, PlanLogger logger) {
         this.planningState = planningState;
@@ -49,6 +63,34 @@ public class GeneticAlgorithm {
     public void run(List<Vuelo> vuelosDisponibles, List<Pedido> pedidos,
                     Map<String, Aeropuerto> aeropuertos, GAParams params,
                     GaMetricsCsv metricsCsv, BusinessRules businessRules) {
+        try (PrintWriter writer = new PrintWriter("plan_asignacion_GA.csv")) {
+            setupExecution(vuelosDisponibles, aeropuertos, params, businessRules, metricsCsv, writer);
+            if (pedidos != null && !pedidos.isEmpty()) {
+                runGAForBatch(new ArrayList<>(pedidos), planningState, businessRules, params);
+            }
+            finalizeExecution();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setupExecution(List<Vuelo> vuelosDisponibles,
+                               Map<String, Aeropuerto> aeropuertos,
+                               GAParams params,
+                               BusinessRules businessRules,
+                               GaMetricsCsv metricsCsv,
+                               PrintWriter assignmentWriter) {
+        this.vuelosDisponibles = vuelosDisponibles != null ? new ArrayList<>(vuelosDisponibles) : Collections.emptyList();
+        this.aeropuertos = aeropuertos;
+        this.metricsCsv = metricsCsv;
+        this.currentRules = businessRules;
+        this.currentParams = params;
+        this.assignmentWriter = assignmentWriter;
+        this.assignmentHeaderWritten = false;
+        this.totalSolicitados = 0;
+        this.totalAsignados = 0;
+        this.totalPendientes = 0;
+        this.pedidosProcesados = 0;
 
         rngSeed = System.currentTimeMillis();
         random.setSeed(rngSeed);
@@ -57,13 +99,25 @@ public class GeneticAlgorithm {
 
         Map<String, Integer> capRest = planningState.flightCapacity();
         capRest.clear();
-        for (Vuelo v : vuelosDisponibles) {
-            capRest.put(flightKey(v), v.capacidad);
+        for (Vuelo vuelo : this.vuelosDisponibles) {
+            capRest.put(flightKey(vuelo), vuelo.capacidad);
         }
 
-        FlightCache cache = new FlightCache(vuelosDisponibles);
-        GraphVuelos graph = new GraphVuelos(vuelosDisponibles);
-        Heuristic greedyByDuration = (pedido, g, st, c) -> {
+        this.cache = new FlightCache(this.vuelosDisponibles);
+        this.graph = new GraphVuelos(this.vuelosDisponibles);
+        this.greedyHeuristic = buildDefaultHeuristic();
+
+        logger.logMetric("startup", 1.0, clock.now());
+
+        if (this.assignmentWriter != null && !assignmentHeaderWritten) {
+            this.assignmentWriter.println("pedido_id,dia,hub_origen,destino,ruta,asignados,pendientes,fitness");
+            this.assignmentWriter.flush();
+            this.assignmentHeaderWritten = true;
+        }
+    }
+
+    private Heuristic buildDefaultHeuristic() {
+        return (pedido, g, st, c) -> {
             if (pedido == null || g == null || c == null) {
                 return null;
             }
@@ -82,99 +136,122 @@ public class GeneticAlgorithm {
             }
             return chromosome;
         };
+    }
 
-        int totalSolicitados = 0;
-        int totalAsignados = 0;
-        int totalPendientes = 0;
+    public void runGAForBatch(List<Pedido> batch,
+                              PlanningState state,
+                              BusinessRules businessRules,
+                              GAParams params) {
+        if (batch == null || batch.isEmpty()) {
+            return;
+        }
+        if (state != null && state != this.planningState) {
+            throw new IllegalArgumentException("PlanningState mismatch for GA execution");
+        }
+        this.currentRules = businessRules != null ? businessRules : this.currentRules;
+        this.currentParams = params != null ? params : this.currentParams;
+        if (this.cache == null || this.graph == null) {
+            throw new IllegalStateException("GA environment not prepared. Call setupExecution first.");
+        }
 
-        try (PrintWriter writer = new PrintWriter("plan_asignacion_GA.csv")) {
-            writer.println("pedido_id,dia,hub_origen,destino,ruta,asignados,pendientes,fitness");
+        Map<String, Integer> capRest = planningState.flightCapacity();
 
-            logger.logMetric("startup", 1.0, clock.now());
+        for (Pedido pedido : batch) {
+            if (pedido == null) {
+                continue;
+            }
+            pedidosProcesados++;
+            totalSolicitados += pedido.cantidad;
+            int restantes = pedido.cantidad;
+            int asignadosTotal = 0;
 
-            for (Pedido p : pedidos) {
-                totalSolicitados += p.cantidad;
-                int restantes = p.cantidad;
-                int asignadosTotal = 0;
+            while (restantes > 0) {
+                List<Chromosome> initialPopulation = PopulationInitializer.initForBatch(
+                        Collections.singletonList(pedido),
+                        planningState,
+                        currentRules,
+                        currentParams,
+                        graph,
+                        cache,
+                        greedyHeuristic,
+                        random);
 
-                while (restantes > 0) {
-                    List<Chromosome> initialPopulation = PopulationInitializer.initPopulation(
-                            params.popSize,
-                            greedyByDuration,
-                            Collections.singletonList(p),
-                            graph,
-                            planningState,
-                            cache,
-                            random);
+                if (initialPopulation.isEmpty()) {
+                    break;
+                }
 
-                    if (initialPopulation.isEmpty()) {
-                        break;
-                    }
+                EvolutionOutcome outcome = evolve(initialPopulation, currentParams, currentRules, logger, clock,
+                        metricsCsv, cache, greedyHeuristic, Collections.singletonList(pedido), graph, pedido);
+                Chromosome best = outcome.best;
 
-                    EvolutionOutcome outcome = evolve(initialPopulation, params, businessRules, logger, clock,
-                            metricsCsv, cache, greedyByDuration, Collections.singletonList(p), graph, p);
-                    Chromosome best = outcome.best;
+                if (best == null || best.getRoute().isEmpty() || !Double.isFinite(best.fitness)) {
+                    break;
+                }
 
-                    if (best == null || best.getRoute().isEmpty() || !Double.isFinite(best.fitness)) {
-                        break;
-                    }
+                int cuello = Integer.MAX_VALUE;
+                for (Vuelo vuelo : best.getRoute()) {
+                    cuello = Math.min(cuello, capRest.getOrDefault(flightKey(vuelo), vuelo.capacidad));
+                }
+                if (cuello <= 0) {
+                    break;
+                }
 
-                    int cuello = Integer.MAX_VALUE;
-                    for (Vuelo v : best.getRoute()) {
-                        cuello = Math.min(cuello, capRest.getOrDefault(flightKey(v), v.capacidad));
-                    }
-                    if (cuello <= 0) {
-                        break;
-                    }
+                Aeropuerto destino = aeropuertos != null ? aeropuertos.get(pedido.destino) : null;
+                int warehouseLimit = computeWarehouseLimit(best, destino, currentRules);
+                if (warehouseLimit <= 0) {
+                    break;
+                }
 
-                    Aeropuerto apDest = aeropuertos.get(p.destino);
-                    int warehouseLimit = computeWarehouseLimit(best, apDest, businessRules);
-                    if (warehouseLimit <= 0) {
-                        break;
-                    }
+                int asignados = Math.min(restantes, Math.min(cuello, warehouseLimit));
+                if (asignados <= 0) {
+                    break;
+                }
 
-                    int asignados = Math.min(restantes, Math.min(cuello, warehouseLimit));
-                    if (asignados <= 0) {
-                        break;
-                    }
+                restantes -= asignados;
+                asignadosTotal += asignados;
 
-                    restantes -= asignados;
-                    asignadosTotal += asignados;
+                for (Vuelo vuelo : best.getRoute()) {
+                    String key = flightKey(vuelo);
+                    capRest.put(key, capRest.get(key) - asignados);
+                }
 
-                    for (Vuelo v : best.getRoute()) {
-                        String key = flightKey(v);
-                        capRest.put(key, capRest.get(key) - asignados);
-                    }
-
-                    int arrivalMinute = best.getArrivalMinute();
-                    if (arrivalMinute >= 0 && apDest != null) {
-                        clock.advanceTo(arrivalMinute);
-                        NavigableMap<Long, Integer> timeline = planningState.warehouseTimeline(p.destino);
-                        for (long m = arrivalMinute; m < arrivalMinute + businessRules.whBlockMin; m++) {
-                            timeline.put(m, timeline.getOrDefault(m, 0) + asignados);
-                        }
-                    }
-
-                    writer.printf("%s,%d,%s,%s,\"%s\",%d,%d,%.4f%n",
-                            p.id, p.dia, p.hubOrigen, p.destino,
-                            best.getRoute().toString(), asignados, restantes, best.fitness);
-
-                    logger.logMetric("pedido_asignado", asignados, clock.now());
-
-                    if (restantes == 0) {
-                        break;
+                int arrivalMinute = best.getArrivalMinute();
+                if (arrivalMinute >= 0 && destino != null) {
+                    clock.advanceTo(arrivalMinute);
+                    NavigableMap<Long, Integer> timeline = planningState.warehouseTimeline(pedido.destino);
+                    for (long minute = arrivalMinute; minute < arrivalMinute + currentRules.whBlockMin; minute++) {
+                        timeline.put(minute, timeline.getOrDefault(minute, 0) + asignados);
                     }
                 }
 
-                totalAsignados += asignadosTotal;
-                totalPendientes += restantes;
+                if (assignmentWriter != null) {
+                    assignmentWriter.printf("%s,%d,%s,%s,\"%s\",%d,%d,%.4f%n",
+                            pedido.id, pedido.dia, pedido.hubOrigen, pedido.destino,
+                            best.getRoute().toString(), asignados, restantes, best.fitness);
+                }
+
+                logger.logMetric("pedido_asignado", asignados, clock.now());
+
+                if (restantes == 0) {
+                    break;
+                }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            totalAsignados += asignadosTotal;
+            totalPendientes += restantes;
         }
 
+        if (assignmentWriter != null) {
+            assignmentWriter.flush();
+        }
+    }
+
+    public void finalizeExecution() {
+        if (assignmentWriter != null) {
+            assignmentWriter.flush();
+        }
         System.out.println("\n=== Resumen GA ===");
-        System.out.println("Pedidos totales: " + pedidos.size());
+        System.out.println("Pedidos totales: " + pedidosProcesados);
         System.out.println("Paquetes solicitados: " + totalSolicitados);
         System.out.println("Paquetes asignados: " + totalAsignados);
         System.out.println("Paquetes pendientes: " + totalPendientes);
