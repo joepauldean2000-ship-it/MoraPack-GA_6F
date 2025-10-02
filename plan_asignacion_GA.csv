@@ -1,200 +1,194 @@
 pedido_id,dia,hub_origen,destino,ruta,asignados,pendientes,fitness
-0000001,1,EBCI,UMMS,"[com.morapack.ga.Vuelo@5ce65a89, com.morapack.ga.Vuelo@25f38edc, com.morapack.ga.Vuelo@1a86f2f1, com.morapack.ga.Vuelo@3eb07fd3, com.morapack.ga.Vuelo@506c589e]",129,0,2.08
-0000002,1,UBBB,OAKB,"[com.morapack.ga.Vuelo@45283ce2, com.morapack.ga.Vuelo@2077d4de, com.morapack.ga.Vuelo@7591083d, com.morapack.ga.Vuelo@77a567e1, com.morapack.ga.Vuelo@736e9adb]",129,0,1.89
-0000003,1,UBBB,VIDP,"[com.morapack.ga.Vuelo@6d21714c, com.morapack.ga.Vuelo@108c4c35, com.morapack.ga.Vuelo@4ccabbaa, com.morapack.ga.Vuelo@4bf558aa, com.morapack.ga.Vuelo@2d38eb89]",130,0,2.08
-0000004,1,SPIM,SKBO,"[com.morapack.ga.Vuelo@5fa7e7ff, com.morapack.ga.Vuelo@4629104a, com.morapack.ga.Vuelo@27f8302d, com.morapack.ga.Vuelo@4d76f3f8, com.morapack.ga.Vuelo@2077d4de]",130,0,1.85
-0000005,1,SPIM,SEQM,"[com.morapack.ga.Vuelo@2d8e6db6, com.morapack.ga.Vuelo@23ab930d, com.morapack.ga.Vuelo@4534b60d, com.morapack.ga.Vuelo@3fa77460, com.morapack.ga.Vuelo@619a5dff]",130,0,1.86
-0000006,1,EBCI,EHAM,"[com.morapack.ga.Vuelo@1ed6993a, com.morapack.ga.Vuelo@7e32c033, com.morapack.ga.Vuelo@7ab2bfe1, com.morapack.ga.Vuelo@497470ed, com.morapack.ga.Vuelo@63c12fb0]",130,0,1.96
-0000007,1,EBCI,LBSF,"[com.morapack.ga.Vuelo@b1a58a3, com.morapack.ga.Vuelo@6438a396, com.morapack.ga.Vuelo@e2144e4, com.morapack.ga.Vuelo@6477463f, com.morapack.ga.Vuelo@3d71d552]",130,0,2.17
-0000008,2,EBCI,UMMS,"[com.morapack.ga.Vuelo@1cf4f579, com.morapack.ga.Vuelo@18769467, com.morapack.ga.Vuelo@46ee7fe8, com.morapack.ga.Vuelo@7506e922, com.morapack.ga.Vuelo@4ee285c6]",131,0,1.96
-0000009,2,EBCI,LBSF,"[com.morapack.ga.Vuelo@621be5d1, com.morapack.ga.Vuelo@5fa7e7ff, com.morapack.ga.Vuelo@573fd745, com.morapack.ga.Vuelo@15327b79, com.morapack.ga.Vuelo@4f2410ac]",131,0,1.79
-0000010,2,SPIM,SVMI,"[com.morapack.ga.Vuelo@722c41f4, com.morapack.ga.Vuelo@5b80350b, com.morapack.ga.Vuelo@5d6f64b1, com.morapack.ga.Vuelo@32a1bec0, com.morapack.ga.Vuelo@22927a81]",132,0,2.17
-0000011,2,UBBB,VIDP,"[com.morapack.ga.Vuelo@78e03bb5, com.morapack.ga.Vuelo@5e8c92f4, com.morapack.ga.Vuelo@61e4705b, com.morapack.ga.Vuelo@50134894, com.morapack.ga.Vuelo@2957fcb0]",132,0,1.89
-0000012,2,UBBB,OERK,"[com.morapack.ga.Vuelo@1376c05c, com.morapack.ga.Vuelo@51521cc1, com.morapack.ga.Vuelo@1b4fb997, com.morapack.ga.Vuelo@deb6432, com.morapack.ga.Vuelo@28ba21f3]",132,0,1.96
-0000013,2,UBBB,OSDI,"[com.morapack.ga.Vuelo@694f9431, com.morapack.ga.Vuelo@f2a0b8e, com.morapack.ga.Vuelo@593634ad, com.morapack.ga.Vuelo@20fa23c1, com.morapack.ga.Vuelo@3581c5f3]",132,0,1.96
-0000014,3,EBCI,EKCH,"[com.morapack.ga.Vuelo@6aa8ceb6, com.morapack.ga.Vuelo@2530c12, com.morapack.ga.Vuelo@73c6c3b2, com.morapack.ga.Vuelo@48533e64, com.morapack.ga.Vuelo@64a294a6]",134,0,1.82
-0000015,3,EBCI,EKCH,"[com.morapack.ga.Vuelo@7e0b37bc, com.morapack.ga.Vuelo@3b95a09c, com.morapack.ga.Vuelo@6ae40994, com.morapack.ga.Vuelo@1a93a7ca, com.morapack.ga.Vuelo@3d82c5f3]",134,0,1.96
-0000016,3,UBBB,OAKB,"[com.morapack.ga.Vuelo@2b05039f, com.morapack.ga.Vuelo@61e717c2, com.morapack.ga.Vuelo@66cd51c3, com.morapack.ga.Vuelo@4dcbadb4, com.morapack.ga.Vuelo@4e515669]",134,0,2.08
-0000017,3,EBCI,LATI,"[com.morapack.ga.Vuelo@17d10166, com.morapack.ga.Vuelo@1b9e1916, com.morapack.ga.Vuelo@ba8a1dc, com.morapack.ga.Vuelo@4f8e5cde, com.morapack.ga.Vuelo@504bae78]",134,0,2.17
-0000018,3,EBCI,LKPR,"[com.morapack.ga.Vuelo@4e515669, com.morapack.ga.Vuelo@3b764bce, com.morapack.ga.Vuelo@759ebb3d, com.morapack.ga.Vuelo@484b61fc, com.morapack.ga.Vuelo@45fe3ee3]",135,0,1.96
-0000019,3,UBBB,OPKC,"[com.morapack.ga.Vuelo@4cdf35a9, com.morapack.ga.Vuelo@4c98385c, com.morapack.ga.Vuelo@5fcfe4b2, com.morapack.ga.Vuelo@6bf2d08e, com.morapack.ga.Vuelo@5eb5c224]",135,0,2.17
-0000020,4,UBBB,OAKB,"[com.morapack.ga.Vuelo@53e25b76, com.morapack.ga.Vuelo@73a8dfcc, com.morapack.ga.Vuelo@ea30797, com.morapack.ga.Vuelo@7e774085, com.morapack.ga.Vuelo@3f8f9dd6]",136,0,2.44
-0000021,4,SPIM,SEQM,"[com.morapack.ga.Vuelo@aec6354, com.morapack.ga.Vuelo@1c655221, com.morapack.ga.Vuelo@58d25a40, com.morapack.ga.Vuelo@1b701da1, com.morapack.ga.Vuelo@726f3b58]",136,0,2.17
-0000022,4,SPIM,SGAS,"[com.morapack.ga.Vuelo@442d9b6e, com.morapack.ga.Vuelo@ee7d9f1, com.morapack.ga.Vuelo@15615099, com.morapack.ga.Vuelo@1edf1c96, com.morapack.ga.Vuelo@368102c8]",137,0,1.96
-0000023,4,UBBB,OSDI,"[com.morapack.ga.Vuelo@6996db8, com.morapack.ga.Vuelo@1963006a, com.morapack.ga.Vuelo@7fbe847c, com.morapack.ga.Vuelo@41975e01, com.morapack.ga.Vuelo@c2e1f26]",137,0,2.17
-0000024,4,EBCI,EDDI,"[com.morapack.ga.Vuelo@dcf3e99, com.morapack.ga.Vuelo@6d9c638, com.morapack.ga.Vuelo@7dc5e7b4, com.morapack.ga.Vuelo@1ee0005, com.morapack.ga.Vuelo@75a1cd57]",137,0,2.08
-0000025,4,SPIM,SEQM,"[com.morapack.ga.Vuelo@3d012ddd, com.morapack.ga.Vuelo@6f2b958e, com.morapack.ga.Vuelo@1eb44e46, com.morapack.ga.Vuelo@6504e3b2, com.morapack.ga.Vuelo@515f550a]",137,0,2.17
-0000026,5,EBCI,LBSF,"[com.morapack.ga.Vuelo@626b2d4a, com.morapack.ga.Vuelo@5e91993f, com.morapack.ga.Vuelo@1c4af82c, com.morapack.ga.Vuelo@379619aa, com.morapack.ga.Vuelo@cac736f]",139,0,2.17
-0000027,5,EBCI,EHAM,"[com.morapack.ga.Vuelo@5e265ba4, com.morapack.ga.Vuelo@156643d4, com.morapack.ga.Vuelo@123a439b, com.morapack.ga.Vuelo@7de26db8, com.morapack.ga.Vuelo@1175e2db]",139,0,2.17
-0000028,5,UBBB,VIDP,"[com.morapack.ga.Vuelo@36aa7bc2, com.morapack.ga.Vuelo@76ccd017, com.morapack.ga.Vuelo@182decdb, com.morapack.ga.Vuelo@26f0a63f, com.morapack.ga.Vuelo@4361bd48]",139,0,1.89
-0000029,5,UBBB,OPKC,"[com.morapack.ga.Vuelo@53bd815b, com.morapack.ga.Vuelo@2401f4c3, com.morapack.ga.Vuelo@7637f22, com.morapack.ga.Vuelo@4926097b, com.morapack.ga.Vuelo@762efe5d]",140,0,1.96
-0000030,5,SPIM,SBBR,"[com.morapack.ga.Vuelo@5d22bbb7, com.morapack.ga.Vuelo@41a4555e, com.morapack.ga.Vuelo@3830f1c0, com.morapack.ga.Vuelo@39ed3c8d, com.morapack.ga.Vuelo@71dac704]",140,0,2.33
-0000031,6,SPIM,SLLP,"[com.morapack.ga.Vuelo@123772c4, com.morapack.ga.Vuelo@2d363fb3, com.morapack.ga.Vuelo@7d6f77cc, com.morapack.ga.Vuelo@5aaa6d82, com.morapack.ga.Vuelo@73a28541]",141,0,2.08
-0000032,6,SPIM,SCEL,"[com.morapack.ga.Vuelo@6f75e721, com.morapack.ga.Vuelo@69222c14, com.morapack.ga.Vuelo@5b80350b, com.morapack.ga.Vuelo@606d8acf, com.morapack.ga.Vuelo@782830e]",141,0,2.44
-0000033,6,SPIM,SABE,"[com.morapack.ga.Vuelo@470e2030, com.morapack.ga.Vuelo@3fb4f649, com.morapack.ga.Vuelo@33833882, com.morapack.ga.Vuelo@200a570f, com.morapack.ga.Vuelo@16b3fc9e]",142,0,2.08
-0000034,6,SPIM,SGAS,"[com.morapack.ga.Vuelo@e2d56bf, com.morapack.ga.Vuelo@244038d0, com.morapack.ga.Vuelo@5680a178, com.morapack.ga.Vuelo@5fdef03a, com.morapack.ga.Vuelo@3b22cdd0]",142,0,2.44
-0000035,6,SPIM,SUAA,"[com.morapack.ga.Vuelo@1e81f4dc, com.morapack.ga.Vuelo@aec6354, com.morapack.ga.Vuelo@4d591d15, com.morapack.ga.Vuelo@65ae6ba4, com.morapack.ga.Vuelo@48cf768c]",142,0,1.79
-0000036,7,EBCI,LATI,"[com.morapack.ga.Vuelo@59f95c5d, com.morapack.ga.Vuelo@5ccd43c2, com.morapack.ga.Vuelo@4aa8f0b4, com.morapack.ga.Vuelo@7960847b, com.morapack.ga.Vuelo@6a6824be]",143,0,2.17
-0000037,7,EBCI,EDDI,"[com.morapack.ga.Vuelo@5c8da962, com.morapack.ga.Vuelo@6a6824be, com.morapack.ga.Vuelo@512ddf17, com.morapack.ga.Vuelo@2c13da15, com.morapack.ga.Vuelo@77556fd]",143,0,1.96
-0000038,7,EBCI,LOWW,"[com.morapack.ga.Vuelo@368239c8, com.morapack.ga.Vuelo@9e89d68, com.morapack.ga.Vuelo@3b192d32, com.morapack.ga.Vuelo@16f65612, com.morapack.ga.Vuelo@311d617d]",144,0,2.08
-0000039,7,EBCI,LKPR,"[com.morapack.ga.Vuelo@7c53a9eb, com.morapack.ga.Vuelo@ed17bee, com.morapack.ga.Vuelo@2a33fae0, com.morapack.ga.Vuelo@707f7052, com.morapack.ga.Vuelo@11028347]",144,0,2.44
-0000040,7,EBCI,LDZA,"[com.morapack.ga.Vuelo@14899482, com.morapack.ga.Vuelo@21588809, com.morapack.ga.Vuelo@2aae9190, com.morapack.ga.Vuelo@2f333739, com.morapack.ga.Vuelo@77468bd9]",144,0,1.89
-0000041,8,EBCI,EKCH,"[com.morapack.ga.Vuelo@12bb4df8, com.morapack.ga.Vuelo@4cc77c2e, com.morapack.ga.Vuelo@4926097b, com.morapack.ga.Vuelo@7a7b0070, com.morapack.ga.Vuelo@39a054a5]",146,0,2.08
-0000042,8,EBCI,EHAM,"[com.morapack.ga.Vuelo@71bc1ae4, com.morapack.ga.Vuelo@6ed3ef1, com.morapack.ga.Vuelo@2437c6dc, com.morapack.ga.Vuelo@1f89ab83, com.morapack.ga.Vuelo@e73f9ac]",146,0,1.96
-0000043,8,UBBB,VIDP,"[com.morapack.ga.Vuelo@61064425, com.morapack.ga.Vuelo@7b1d7fff, com.morapack.ga.Vuelo@299a06ac, com.morapack.ga.Vuelo@383534aa, com.morapack.ga.Vuelo@6bc168e5]",146,0,1.96
-0000044,8,UBBB,OSDI,"[com.morapack.ga.Vuelo@7b3300e5, com.morapack.ga.Vuelo@2e5c649, com.morapack.ga.Vuelo@136432db, com.morapack.ga.Vuelo@7382f612, com.morapack.ga.Vuelo@1055e4af]",147,0,1.96
-0000045,8,UBBB,OERK,"[com.morapack.ga.Vuelo@3caeaf62, com.morapack.ga.Vuelo@e6ea0c6, com.morapack.ga.Vuelo@6a38e57f, com.morapack.ga.Vuelo@2437c6dc, com.morapack.ga.Vuelo@5577140b]",147,0,1.96
-0000046,9,UBBB,OOMS,"[com.morapack.ga.Vuelo@1c6b6478, com.morapack.ga.Vuelo@67f89fa3, com.morapack.ga.Vuelo@4ac68d3e, com.morapack.ga.Vuelo@277c0f21, com.morapack.ga.Vuelo@6073f712]",148,0,1.82
-0000047,9,UBBB,OYSN,"[com.morapack.ga.Vuelo@43556938, com.morapack.ga.Vuelo@3d04a311, com.morapack.ga.Vuelo@7a46a697, com.morapack.ga.Vuelo@5f205aa, com.morapack.ga.Vuelo@39a054a5]",148,0,2.17
-0000048,9,UBBB,OMDB,"[com.morapack.ga.Vuelo@6d86b085, com.morapack.ga.Vuelo@75828a0f, com.morapack.ga.Vuelo@3abfe836, com.morapack.ga.Vuelo@2ff5659e, com.morapack.ga.Vuelo@77afea7d]",149,0,2.44
-0000049,9,UBBB,OJAI,"[com.morapack.ga.Vuelo@161cd475, com.morapack.ga.Vuelo@39a054a5, com.morapack.ga.Vuelo@7637f22, com.morapack.ga.Vuelo@532760d8, com.morapack.ga.Vuelo@57fa26b7]",66,83,1.96
-0000049,9,UBBB,OJAI,"[com.morapack.ga.Vuelo@1c4af82c, com.morapack.ga.Vuelo@5f8ed237, com.morapack.ga.Vuelo@2f410acf, com.morapack.ga.Vuelo@47089e5f, com.morapack.ga.Vuelo@4141d797]",83,0,1.96
-0000050,9,EBCI,UMMS,"[com.morapack.ga.Vuelo@68f7aae2, com.morapack.ga.Vuelo@4f47d241, com.morapack.ga.Vuelo@ea30797, com.morapack.ga.Vuelo@4c3e4790, com.morapack.ga.Vuelo@38cccef]",149,0,2.44
-0000051,10,EBCI,LATI,"[com.morapack.ga.Vuelo@5679c6c6, com.morapack.ga.Vuelo@27ddd392, com.morapack.ga.Vuelo@19e1023e, com.morapack.ga.Vuelo@7cef4e59, com.morapack.ga.Vuelo@64b8f8f4]",150,0,2.17
-0000052,10,EBCI,EDDI,"[com.morapack.ga.Vuelo@2db0f6b2, com.morapack.ga.Vuelo@4361bd48, com.morapack.ga.Vuelo@3cd1f1c8, com.morapack.ga.Vuelo@3a4afd8d, com.morapack.ga.Vuelo@1996cd68]",150,0,2.33
-0000053,10,EBCI,LOWW,"[com.morapack.ga.Vuelo@3339ad8e, com.morapack.ga.Vuelo@555590, com.morapack.ga.Vuelo@9e89d68, com.morapack.ga.Vuelo@6d1e7682, com.morapack.ga.Vuelo@424c0bc4]",151,0,1.96
-0000054,10,EBCI,LKPR,"[com.morapack.ga.Vuelo@3c679bde, com.morapack.ga.Vuelo@16b4a017, com.morapack.ga.Vuelo@8807e25, com.morapack.ga.Vuelo@2a3046da, com.morapack.ga.Vuelo@1b4fb997]",151,0,1.96
-0000055,10,EBCI,LDZA,"[com.morapack.ga.Vuelo@2a098129, com.morapack.ga.Vuelo@707f7052, com.morapack.ga.Vuelo@593634ad, com.morapack.ga.Vuelo@198e2867, com.morapack.ga.Vuelo@12f40c25]",151,0,2.44
-0000056,11,EBCI,EKCH,"[com.morapack.ga.Vuelo@3ada9e37, com.morapack.ga.Vuelo@5cbc508c, com.morapack.ga.Vuelo@3419866c, com.morapack.ga.Vuelo@63e31ee, com.morapack.ga.Vuelo@68fb2c38]",152,0,1.96
-0000057,11,EBCI,EHAM,"[com.morapack.ga.Vuelo@41a4555e, com.morapack.ga.Vuelo@567d299b, com.morapack.ga.Vuelo@2eafffde, com.morapack.ga.Vuelo@59690aa4, com.morapack.ga.Vuelo@6842775d]",152,0,1.96
-0000058,11,UBBB,VIDP,"[com.morapack.ga.Vuelo@574caa3f, com.morapack.ga.Vuelo@64cee07, com.morapack.ga.Vuelo@1761e840, com.morapack.ga.Vuelo@6c629d6e, com.morapack.ga.Vuelo@5ecddf8f]",153,0,1.96
-0000059,11,UBBB,OSDI,"[com.morapack.ga.Vuelo@3f102e87, com.morapack.ga.Vuelo@6ed3ef1, com.morapack.ga.Vuelo@27abe2cd, com.morapack.ga.Vuelo@5f5a92bb, com.morapack.ga.Vuelo@6fdb1f78]",153,0,2.22
-0000060,11,UBBB,OERK,"[com.morapack.ga.Vuelo@51016012, com.morapack.ga.Vuelo@64cee07, com.morapack.ga.Vuelo@3b95a09c, com.morapack.ga.Vuelo@29444d75, com.morapack.ga.Vuelo@2280cdac]",147,7,1.96
-0000060,11,UBBB,OERK,"[com.morapack.ga.Vuelo@1517365b, com.morapack.ga.Vuelo@4fccd51b, com.morapack.ga.Vuelo@44e81672, com.morapack.ga.Vuelo@60215eee, com.morapack.ga.Vuelo@4ca8195f]",7,0,1.89
-0000061,12,UBBB,OOMS,"[com.morapack.ga.Vuelo@65e579dc, com.morapack.ga.Vuelo@61baa894, com.morapack.ga.Vuelo@b065c63, com.morapack.ga.Vuelo@768debd, com.morapack.ga.Vuelo@490d6c15]",154,0,2.17
-0000062,12,UBBB,OYSN,"[com.morapack.ga.Vuelo@7d4793a8, com.morapack.ga.Vuelo@27f8302d, com.morapack.ga.Vuelo@449b2d27, com.morapack.ga.Vuelo@5479e3f, com.morapack.ga.Vuelo@41a4555e]",48,107,1.96
-0000062,12,UBBB,OYSN,"[com.morapack.ga.Vuelo@27082746, com.morapack.ga.Vuelo@66133adc, com.morapack.ga.Vuelo@7bfcd12c, com.morapack.ga.Vuelo@42f30e0a, com.morapack.ga.Vuelo@f2a0b8e]",107,0,1.89
-0000063,12,UBBB,OMDB,"[com.morapack.ga.Vuelo@24273305, com.morapack.ga.Vuelo@5b1d2887, com.morapack.ga.Vuelo@46f5f779, com.morapack.ga.Vuelo@1c2c22f3, com.morapack.ga.Vuelo@18e8568]",155,0,1.96
-0000064,12,UBBB,OJAI,"[com.morapack.ga.Vuelo@33e5ccce, com.morapack.ga.Vuelo@5a42bbf4, com.morapack.ga.Vuelo@6aa8ceb6, com.morapack.ga.Vuelo@270421f5, com.morapack.ga.Vuelo@52d455b8]",156,0,1.96
-0000065,12,EBCI,UMMS,"[com.morapack.ga.Vuelo@6a38e57f, com.morapack.ga.Vuelo@4f4a7090, com.morapack.ga.Vuelo@18ef96, com.morapack.ga.Vuelo@1517365b, com.morapack.ga.Vuelo@6956de9]",156,0,1.79
-0000066,13,SPIM,SVMI,"[com.morapack.ga.Vuelo@769c9116, com.morapack.ga.Vuelo@6aceb1a5, com.morapack.ga.Vuelo@2d6d8735, com.morapack.ga.Vuelo@ba4d54, com.morapack.ga.Vuelo@12bc6874]",157,0,1.96
-0000067,13,SPIM,SKBO,"[com.morapack.ga.Vuelo@de0a01f, com.morapack.ga.Vuelo@4c75cab9, com.morapack.ga.Vuelo@1ef7fe8e, com.morapack.ga.Vuelo@27f8302d, com.morapack.ga.Vuelo@6f79caec]",142,15,1.79
-0000067,13,SPIM,SKBO,"[com.morapack.ga.Vuelo@67117f44, com.morapack.ga.Vuelo@5d3411d, com.morapack.ga.Vuelo@2471cca7, com.morapack.ga.Vuelo@5fe5c6f, com.morapack.ga.Vuelo@1e81f4dc]",15,0,1.79
-0000068,13,SPIM,SEQM,"[com.morapack.ga.Vuelo@6979e8cb, com.morapack.ga.Vuelo@763d9750, com.morapack.ga.Vuelo@5c0369c4, com.morapack.ga.Vuelo@2be94b0f, com.morapack.ga.Vuelo@d70c109]",158,0,1.79
-0000069,13,SPIM,SBBR,"[com.morapack.ga.Vuelo@17ed40e0, com.morapack.ga.Vuelo@50675690, com.morapack.ga.Vuelo@31b7dea0, com.morapack.ga.Vuelo@6979e8cb, com.morapack.ga.Vuelo@3ac42916]",158,0,1.79
-0000070,13,SPIM,SLLP,"[com.morapack.ga.Vuelo@47d384ee, com.morapack.ga.Vuelo@2d6a9952, com.morapack.ga.Vuelo@22a71081, com.morapack.ga.Vuelo@3930015a, com.morapack.ga.Vuelo@629f0666]",159,0,2.17
-0000071,14,SPIM,SCEL,"[com.morapack.ga.Vuelo@1bc6a36e, com.morapack.ga.Vuelo@1ff8b8f, com.morapack.ga.Vuelo@387c703b, com.morapack.ga.Vuelo@224aed64, com.morapack.ga.Vuelo@c39f790]",159,0,1.96
-0000072,14,SPIM,SABE,"[com.morapack.ga.Vuelo@33e5ccce, com.morapack.ga.Vuelo@71e7a66b, com.morapack.ga.Vuelo@52d455b8, com.morapack.ga.Vuelo@19e1023e, com.morapack.ga.Vuelo@2ac1fdc4]",144,16,1.96
-0000072,14,SPIM,SABE,"[com.morapack.ga.Vuelo@5f150435, com.morapack.ga.Vuelo@1c53fd30, com.morapack.ga.Vuelo@50cbc42f, com.morapack.ga.Vuelo@4534b60d, com.morapack.ga.Vuelo@75412c2f]",16,0,2.33
-0000073,14,SPIM,SGAS,"[com.morapack.ga.Vuelo@282ba1e, com.morapack.ga.Vuelo@13b6d03, com.morapack.ga.Vuelo@f5f2bb7, com.morapack.ga.Vuelo@73035e27, com.morapack.ga.Vuelo@64c64813]",160,0,2.44
-0000074,14,SPIM,SUAA,"[com.morapack.ga.Vuelo@3ecf72fd, com.morapack.ga.Vuelo@483bf400, com.morapack.ga.Vuelo@21a06946, com.morapack.ga.Vuelo@77f03bb1, com.morapack.ga.Vuelo@326de728]",161,0,2.33
-0000075,14,EBCI,LATI,"[com.morapack.ga.Vuelo@25618e91, com.morapack.ga.Vuelo@7a92922, com.morapack.ga.Vuelo@71f2a7d5, com.morapack.ga.Vuelo@2cfb4a64, com.morapack.ga.Vuelo@5474c6c]",161,0,1.96
-0000076,15,EBCI,EDDI,"[com.morapack.ga.Vuelo@4b6995df, com.morapack.ga.Vuelo@2fc14f68, com.morapack.ga.Vuelo@591f989e, com.morapack.ga.Vuelo@5b1d2887, com.morapack.ga.Vuelo@66048bfd]",162,0,1.96
-0000077,15,EBCI,LOWW,"[com.morapack.ga.Vuelo@61443d8f, com.morapack.ga.Vuelo@445b84c0, com.morapack.ga.Vuelo@61a52fbd, com.morapack.ga.Vuelo@763d9750, com.morapack.ga.Vuelo@233c0b17]",162,0,1.96
-0000078,15,EBCI,LKPR,"[com.morapack.ga.Vuelo@18ef96, com.morapack.ga.Vuelo@63d4e2ba, com.morapack.ga.Vuelo@7bb11784, com.morapack.ga.Vuelo@33a10788, com.morapack.ga.Vuelo@7006c658]",163,0,1.96
-0000079,15,EBCI,LDZA,"[com.morapack.ga.Vuelo@34033bd0, com.morapack.ga.Vuelo@47fd17e3, com.morapack.ga.Vuelo@7cdbc5d3, com.morapack.ga.Vuelo@3aa9e816, com.morapack.ga.Vuelo@17d99928]",163,0,1.79
-0000080,15,EBCI,EKCH,"[com.morapack.ga.Vuelo@3834d63f, com.morapack.ga.Vuelo@15615099, com.morapack.ga.Vuelo@1ae369b7, com.morapack.ga.Vuelo@18769467, com.morapack.ga.Vuelo@6fffcba5]",164,0,1.72
-0000081,16,EBCI,EHAM,"[com.morapack.ga.Vuelo@e2d56bf, com.morapack.ga.Vuelo@2d8e6db6, com.morapack.ga.Vuelo@34340fab, com.morapack.ga.Vuelo@5d6f64b1, com.morapack.ga.Vuelo@2aafb23c]",164,0,2.17
-0000082,16,UBBB,VIDP,"[com.morapack.ga.Vuelo@2b80d80f, com.morapack.ga.Vuelo@3ab39c39, com.morapack.ga.Vuelo@2eee9593, com.morapack.ga.Vuelo@7907ec20, com.morapack.ga.Vuelo@546a03af]",165,0,2.17
-0000083,16,UBBB,OSDI,"[com.morapack.ga.Vuelo@721e0f4f, com.morapack.ga.Vuelo@28864e92, com.morapack.ga.Vuelo@6a38e57f, com.morapack.ga.Vuelo@6d1e7682, com.morapack.ga.Vuelo@6ea6d14e]",37,128,2.33
-0000083,16,UBBB,OSDI,"[com.morapack.ga.Vuelo@6ad5c04e, com.morapack.ga.Vuelo@6833ce2c, com.morapack.ga.Vuelo@725bef66, com.morapack.ga.Vuelo@2aaf7cc2, com.morapack.ga.Vuelo@6e3c1e69]",128,0,1.79
-0000084,16,UBBB,OERK,"[com.morapack.ga.Vuelo@1888ff2c, com.morapack.ga.Vuelo@c39f790, com.morapack.ga.Vuelo@35851384, com.morapack.ga.Vuelo@649d209a, com.morapack.ga.Vuelo@6adca536]",161,5,2.17
-0000084,16,UBBB,OERK,"[com.morapack.ga.Vuelo@357246de, com.morapack.ga.Vuelo@28f67ac7, com.morapack.ga.Vuelo@256216b3, com.morapack.ga.Vuelo@2a18f23c, com.morapack.ga.Vuelo@d7b1517]",5,0,1.90
-0000085,16,UBBB,OOMS,"[com.morapack.ga.Vuelo@16c0663d, com.morapack.ga.Vuelo@23223dd8, com.morapack.ga.Vuelo@4ec6a292, com.morapack.ga.Vuelo@5b1d2887, com.morapack.ga.Vuelo@1b40d5f0]",43,123,2.27
-0000085,16,UBBB,OOMS,"[com.morapack.ga.Vuelo@2471cca7, com.morapack.ga.Vuelo@ea4a92b, com.morapack.ga.Vuelo@3c5a99da, com.morapack.ga.Vuelo@47f37ef1, com.morapack.ga.Vuelo@5a01ccaa]",123,0,2.22
-0000086,17,UBBB,OYSN,"[com.morapack.ga.Vuelo@71c7db30, com.morapack.ga.Vuelo@19bb089b, com.morapack.ga.Vuelo@4563e9ab, com.morapack.ga.Vuelo@11531931, com.morapack.ga.Vuelo@5e025e70]",167,0,2.08
-0000087,17,UBBB,OMDB,"[com.morapack.ga.Vuelo@200a570f, com.morapack.ga.Vuelo@1fbc7afb, com.morapack.ga.Vuelo@45c8e616, com.morapack.ga.Vuelo@4cdbe50f, com.morapack.ga.Vuelo@66d33a]",167,0,1.79
-0000088,17,UBBB,OJAI,"[com.morapack.ga.Vuelo@7cf10a6f, com.morapack.ga.Vuelo@33833882, com.morapack.ga.Vuelo@7e0babb1, com.morapack.ga.Vuelo@6debcae2, com.morapack.ga.Vuelo@5ba23b66]",168,0,1.89
-0000089,17,EBCI,UMMS,"[com.morapack.ga.Vuelo@2ff4f00f, com.morapack.ga.Vuelo@c818063, com.morapack.ga.Vuelo@3f0ee7cb, com.morapack.ga.Vuelo@75bd9247, com.morapack.ga.Vuelo@7d417077]",168,0,2.57
-0000090,17,SPIM,SVMI,"[com.morapack.ga.Vuelo@7dc36524, com.morapack.ga.Vuelo@35bbe5e8, com.morapack.ga.Vuelo@2c8d66b2, com.morapack.ga.Vuelo@5a39699c, com.morapack.ga.Vuelo@3cb5cdba]",169,0,2.17
-0000091,18,SPIM,SKBO,"[com.morapack.ga.Vuelo@56cbfb61, com.morapack.ga.Vuelo@71dac704, com.morapack.ga.Vuelo@5679c6c6, com.morapack.ga.Vuelo@1134affc, com.morapack.ga.Vuelo@d041cf]",150,19,1.79
-0000091,18,SPIM,SKBO,"[com.morapack.ga.Vuelo@129a8472, com.morapack.ga.Vuelo@1b0375b3, com.morapack.ga.Vuelo@2f7c7260, com.morapack.ga.Vuelo@de0a01f, com.morapack.ga.Vuelo@2d209079]",19,0,2.33
-0000092,18,SPIM,SEQM,"[com.morapack.ga.Vuelo@6bdf28bb, com.morapack.ga.Vuelo@6b71769e, com.morapack.ga.Vuelo@2752f6e2, com.morapack.ga.Vuelo@e580929, com.morapack.ga.Vuelo@1cd072a9]",170,0,1.67
-0000093,18,SPIM,SBBR,"[com.morapack.ga.Vuelo@7c75222b, com.morapack.ga.Vuelo@4c203ea1, com.morapack.ga.Vuelo@483bf400, com.morapack.ga.Vuelo@27f674d, com.morapack.ga.Vuelo@1d251891]",159,11,1.96
-0000093,18,SPIM,SBBR,"[com.morapack.ga.Vuelo@9e89d68, com.morapack.ga.Vuelo@48140564, com.morapack.ga.Vuelo@58ceff1, com.morapack.ga.Vuelo@69222c14, com.morapack.ga.Vuelo@7c30a502]",11,0,2.17
-0000094,18,SPIM,SLLP,"[com.morapack.ga.Vuelo@49e4cb85, com.morapack.ga.Vuelo@2133c8f8, com.morapack.ga.Vuelo@43a25848, com.morapack.ga.Vuelo@3ac3fd8b, com.morapack.ga.Vuelo@5594a1b5]",171,0,1.96
-0000095,18,SPIM,SCEL,"[com.morapack.ga.Vuelo@6a5fc7f7, com.morapack.ga.Vuelo@3b6eb2ec, com.morapack.ga.Vuelo@1e643faf, com.morapack.ga.Vuelo@6e8dacdf, com.morapack.ga.Vuelo@7a79be86]",171,0,2.17
-0000096,19,SPIM,SABE,"[com.morapack.ga.Vuelo@7de26db8, com.morapack.ga.Vuelo@34ce8af7, com.morapack.ga.Vuelo@b684286, com.morapack.ga.Vuelo@880ec60, com.morapack.ga.Vuelo@3f3afe78]",172,0,1.96
-0000097,19,SPIM,SGAS,"[com.morapack.ga.Vuelo@43556938, com.morapack.ga.Vuelo@7f63425a, com.morapack.ga.Vuelo@36d64342, com.morapack.ga.Vuelo@39ba5a14, com.morapack.ga.Vuelo@511baa65]",172,0,2.69
-0000098,19,SPIM,SUAA,"[com.morapack.ga.Vuelo@340f438e, com.morapack.ga.Vuelo@30c7da1e, com.morapack.ga.Vuelo@5b464ce8, com.morapack.ga.Vuelo@6842775d, com.morapack.ga.Vuelo@57829d67]",148,25,1.96
-0000098,19,SPIM,SUAA,"[com.morapack.ga.Vuelo@19dfb72a, com.morapack.ga.Vuelo@17c68925, com.morapack.ga.Vuelo@7e0ea639, com.morapack.ga.Vuelo@3d24753a, com.morapack.ga.Vuelo@59a6e353]",25,0,1.79
-0000099,19,EBCI,LATI,"[com.morapack.ga.Vuelo@7a0ac6e3, com.morapack.ga.Vuelo@71be98f5, com.morapack.ga.Vuelo@2d38eb89, com.morapack.ga.Vuelo@6fadae5d, com.morapack.ga.Vuelo@17f6480]",173,0,2.17
-0000100,19,EBCI,EDDI,"[com.morapack.ga.Vuelo@2d6e8792, com.morapack.ga.Vuelo@39ba5a14, com.morapack.ga.Vuelo@b684286, com.morapack.ga.Vuelo@2812cbfa, com.morapack.ga.Vuelo@574caa3f]",128,46,1.79
-0000100,19,EBCI,EDDI,"[com.morapack.ga.Vuelo@3ada9e37, com.morapack.ga.Vuelo@2acf57e3, com.morapack.ga.Vuelo@2cfb4a64, com.morapack.ga.Vuelo@506e6d5e, com.morapack.ga.Vuelo@96532d6]",46,0,1.96
-0000101,20,EBCI,LOWW,"[com.morapack.ga.Vuelo@3796751b, com.morapack.ga.Vuelo@cac736f, com.morapack.ga.Vuelo@67b64c45, com.morapack.ga.Vuelo@4411d970, com.morapack.ga.Vuelo@6442b0a6]",161,13,1.79
-0000101,20,EBCI,LOWW,"[com.morapack.ga.Vuelo@60f82f98, com.morapack.ga.Vuelo@35f983a6, com.morapack.ga.Vuelo@7f690630, com.morapack.ga.Vuelo@edf4efb, com.morapack.ga.Vuelo@2f7a2457]",13,0,3.23
-0000102,20,EBCI,LKPR,"[com.morapack.ga.Vuelo@566776ad, com.morapack.ga.Vuelo@6108b2d7, com.morapack.ga.Vuelo@4f2410ac, com.morapack.ga.Vuelo@1554909b, com.morapack.ga.Vuelo@6bf256fa]",175,0,1.96
-0000103,20,EBCI,LDZA,"[com.morapack.ga.Vuelo@6cd8737, com.morapack.ga.Vuelo@22f71333, com.morapack.ga.Vuelo@13969fbe, com.morapack.ga.Vuelo@6ad5c04e, com.morapack.ga.Vuelo@6aaa5eb0]",175,0,2.17
-0000104,20,EBCI,EKCH,"[com.morapack.ga.Vuelo@3498ed, com.morapack.ga.Vuelo@1a407d53, com.morapack.ga.Vuelo@3d8c7aca, com.morapack.ga.Vuelo@5ebec15, com.morapack.ga.Vuelo@21bcffb5]",176,0,1.96
-0000105,20,EBCI,EHAM,"[com.morapack.ga.Vuelo@380fb434, com.morapack.ga.Vuelo@668bc3d5, com.morapack.ga.Vuelo@3cda1055, com.morapack.ga.Vuelo@7a5d012c, com.morapack.ga.Vuelo@3fb6a447]",176,0,2.44
-0000106,21,UBBB,VIDP,"[com.morapack.ga.Vuelo@79b4d0f, com.morapack.ga.Vuelo@6b2fad11, com.morapack.ga.Vuelo@79698539, com.morapack.ga.Vuelo@73f792cf, com.morapack.ga.Vuelo@2ed94a8b]",177,0,1.89
-0000107,21,UBBB,OSDI,"[com.morapack.ga.Vuelo@6a5fc7f7, com.morapack.ga.Vuelo@38082d64, com.morapack.ga.Vuelo@6b2fad11, com.morapack.ga.Vuelo@1376c05c, com.morapack.ga.Vuelo@dfd3711]",143,34,3.23
-0000107,21,UBBB,OSDI,"[com.morapack.ga.Vuelo@42d3bd8b, com.morapack.ga.Vuelo@26ba2a48, com.morapack.ga.Vuelo@5f2050f6, com.morapack.ga.Vuelo@3b81a1bc, com.morapack.ga.Vuelo@64616ca2]",34,0,1.96
-0000108,21,UBBB,OERK,"[com.morapack.ga.Vuelo@13fee20c, com.morapack.ga.Vuelo@593634ad, com.morapack.ga.Vuelo@4e04a765, com.morapack.ga.Vuelo@783e6358, com.morapack.ga.Vuelo@17550481]",17,161,1.96
-0000108,21,UBBB,OERK,"[com.morapack.ga.Vuelo@735f7ae5, com.morapack.ga.Vuelo@180bc464, com.morapack.ga.Vuelo@1324409e, com.morapack.ga.Vuelo@2c6a3f77, com.morapack.ga.Vuelo@246ae04d]",161,0,1.82
-0000109,21,UBBB,OOMS,"[com.morapack.ga.Vuelo@62043840, com.morapack.ga.Vuelo@4c3e4790, com.morapack.ga.Vuelo@5315b42e, com.morapack.ga.Vuelo@2ef9b8bc, com.morapack.ga.Vuelo@5d624da6]",178,0,2.17
-0000110,21,UBBB,OYSN,"[com.morapack.ga.Vuelo@1e67b872, com.morapack.ga.Vuelo@60addb54, com.morapack.ga.Vuelo@3f2a3a5, com.morapack.ga.Vuelo@4cb2c100, com.morapack.ga.Vuelo@6fb554cc]",179,0,1.89
-0000111,22,UBBB,OMDB,"[com.morapack.ga.Vuelo@614c5515, com.morapack.ga.Vuelo@1134affc, com.morapack.ga.Vuelo@532760d8, com.morapack.ga.Vuelo@77b52d12, com.morapack.ga.Vuelo@2d554825]",179,0,2.17
-0000112,22,UBBB,OJAI,"[com.morapack.ga.Vuelo@e580929, com.morapack.ga.Vuelo@16c0663d, com.morapack.ga.Vuelo@1e643faf, com.morapack.ga.Vuelo@629f0666, com.morapack.ga.Vuelo@28ba21f3]",129,51,2.63
-0000112,22,UBBB,OJAI,"[com.morapack.ga.Vuelo@3caeaf62, com.morapack.ga.Vuelo@68837a77, com.morapack.ga.Vuelo@6be46e8f, com.morapack.ga.Vuelo@24273305, com.morapack.ga.Vuelo@3567135c]",51,0,2.08
-0000113,22,EBCI,UMMS,"[com.morapack.ga.Vuelo@327471b5, com.morapack.ga.Vuelo@4157f54e, com.morapack.ga.Vuelo@90f6bfd, com.morapack.ga.Vuelo@47f6473, com.morapack.ga.Vuelo@722c41f4]",180,0,1.79
-0000114,22,SPIM,SVMI,"[com.morapack.ga.Vuelo@1edf1c96, com.morapack.ga.Vuelo@15975490, com.morapack.ga.Vuelo@6b143ee9, com.morapack.ga.Vuelo@1936f0f5, com.morapack.ga.Vuelo@6615435c]",163,18,2.08
-0000114,22,SPIM,SVMI,"[com.morapack.ga.Vuelo@4909b8da, com.morapack.ga.Vuelo@3a03464, com.morapack.ga.Vuelo@2d3fcdbd, com.morapack.ga.Vuelo@1936f0f5, com.morapack.ga.Vuelo@617c74e5]",18,0,1.96
-0000115,22,SPIM,SKBO,"[com.morapack.ga.Vuelo@6537cf78, com.morapack.ga.Vuelo@67b6d4ae, com.morapack.ga.Vuelo@65e579dc, com.morapack.ga.Vuelo@311d617d, com.morapack.ga.Vuelo@34b7bfc0]",166,15,2.33
-0000115,22,SPIM,SKBO,"[com.morapack.ga.Vuelo@6fadae5d, com.morapack.ga.Vuelo@366e2eef, com.morapack.ga.Vuelo@6df97b55, com.morapack.ga.Vuelo@6504e3b2, com.morapack.ga.Vuelo@96532d6]",15,0,2.17
-0000116,23,SPIM,SEQM,"[com.morapack.ga.Vuelo@3cbbc1e0, com.morapack.ga.Vuelo@2cfb4a64, com.morapack.ga.Vuelo@35fb3008, com.morapack.ga.Vuelo@725bef66, com.morapack.ga.Vuelo@7225790e]",93,89,2.17
-0000116,23,SPIM,SEQM,"[com.morapack.ga.Vuelo@54a097cc, com.morapack.ga.Vuelo@36f6e879, com.morapack.ga.Vuelo@725bef66, com.morapack.ga.Vuelo@5a61f5df, com.morapack.ga.Vuelo@3551a94]",89,0,2.44
-0000117,23,SPIM,SBBR,"[com.morapack.ga.Vuelo@2f7c7260, com.morapack.ga.Vuelo@531be3c5, com.morapack.ga.Vuelo@52af6cff, com.morapack.ga.Vuelo@735b478, com.morapack.ga.Vuelo@2c9f9fb0]",182,0,1.96
-0000118,23,SPIM,SLLP,"[com.morapack.ga.Vuelo@2096442d, com.morapack.ga.Vuelo@9f70c54, com.morapack.ga.Vuelo@66048bfd, com.morapack.ga.Vuelo@234bef66, com.morapack.ga.Vuelo@737996a0]",158,25,1.96
-0000118,23,SPIM,SLLP,"[com.morapack.ga.Vuelo@61dc03ce, com.morapack.ga.Vuelo@71f2a7d5, com.morapack.ga.Vuelo@424c0bc4, com.morapack.ga.Vuelo@50f8360d, com.morapack.ga.Vuelo@2cb4c3ab]",25,0,2.17
-0000119,23,SPIM,SCEL,"[com.morapack.ga.Vuelo@13c78c0b, com.morapack.ga.Vuelo@12843fce, com.morapack.ga.Vuelo@3dd3bcd, com.morapack.ga.Vuelo@97e1986, com.morapack.ga.Vuelo@21bcffb5]",124,59,1.96
-0000119,23,SPIM,SCEL,"[com.morapack.ga.Vuelo@3d82c5f3, com.morapack.ga.Vuelo@63e31ee, com.morapack.ga.Vuelo@26f67b76, com.morapack.ga.Vuelo@153f5a29, com.morapack.ga.Vuelo@7f560810]",59,0,2.44
-0000120,23,SPIM,SABE,"[com.morapack.ga.Vuelo@69d9c55, com.morapack.ga.Vuelo@13a57a3b, com.morapack.ga.Vuelo@7ca48474, com.morapack.ga.Vuelo@337d0578, com.morapack.ga.Vuelo@59e84876]",184,0,1.83
-0000121,24,SPIM,SGAS,"[com.morapack.ga.Vuelo@61a485d2, com.morapack.ga.Vuelo@39fb3ab6, com.morapack.ga.Vuelo@5e025e70, com.morapack.ga.Vuelo@6276ae34, com.morapack.ga.Vuelo@7946e1f4]",173,11,1.96
-0000121,24,SPIM,SGAS,"[com.morapack.ga.Vuelo@3c09711b, com.morapack.ga.Vuelo@5cc7c2a6, com.morapack.ga.Vuelo@b97c004, com.morapack.ga.Vuelo@4590c9c3, com.morapack.ga.Vuelo@75a1cd57]",11,0,1.96
-0000122,24,SPIM,SUAA,"[com.morapack.ga.Vuelo@32e6e9c3, com.morapack.ga.Vuelo@5056dfcb, com.morapack.ga.Vuelo@6574b225, com.morapack.ga.Vuelo@2669b199, com.morapack.ga.Vuelo@2344fc66]",185,0,1.96
-0000123,24,EBCI,LATI,"[com.morapack.ga.Vuelo@458ad742, com.morapack.ga.Vuelo@736e9adb, com.morapack.ga.Vuelo@5afa04c, com.morapack.ga.Vuelo@6ea12c19, com.morapack.ga.Vuelo@6a024a67]",171,14,1.64
-0000123,24,EBCI,LATI,"[com.morapack.ga.Vuelo@7921b0a2, com.morapack.ga.Vuelo@694f9431, com.morapack.ga.Vuelo@174d20a, com.morapack.ga.Vuelo@66d2e7d9, com.morapack.ga.Vuelo@1efbd816]",14,0,1.79
-0000124,24,EBCI,EDDI,"[com.morapack.ga.Vuelo@6a2bcfcb, com.morapack.ga.Vuelo@4de8b406, com.morapack.ga.Vuelo@3c756e4d, com.morapack.ga.Vuelo@7c0e2abd, com.morapack.ga.Vuelo@48eff760]",186,0,1.89
-0000125,24,EBCI,LOWW,"[com.morapack.ga.Vuelo@402f32ff, com.morapack.ga.Vuelo@3aa9e816, com.morapack.ga.Vuelo@573f2bb1, com.morapack.ga.Vuelo@5ae9a829, com.morapack.ga.Vuelo@2a098129]",157,29,1.72
-0000125,24,EBCI,LOWW,"[com.morapack.ga.Vuelo@6d8a00e3, com.morapack.ga.Vuelo@1996cd68, com.morapack.ga.Vuelo@548b7f67, com.morapack.ga.Vuelo@7ac7a4e4, com.morapack.ga.Vuelo@6d78f375]",29,0,1.97
-0000126,25,EBCI,LKPR,"[com.morapack.ga.Vuelo@50c87b21, com.morapack.ga.Vuelo@5f375618, com.morapack.ga.Vuelo@1810399e, com.morapack.ga.Vuelo@47d384ee, com.morapack.ga.Vuelo@32d992b2]",187,0,2.36
-0000127,25,EBCI,LDZA,"[com.morapack.ga.Vuelo@215be6bb, com.morapack.ga.Vuelo@4439f31e, com.morapack.ga.Vuelo@5dfcfece, com.morapack.ga.Vuelo@23ceabc1, com.morapack.ga.Vuelo@5d5eef3d]",187,0,2.08
-0000128,25,EBCI,EKCH,"[com.morapack.ga.Vuelo@56f4468b, com.morapack.ga.Vuelo@6cc4c815, com.morapack.ga.Vuelo@3a82f6ef, com.morapack.ga.Vuelo@100fc185, com.morapack.ga.Vuelo@643b1d11]",188,0,1.80
-0000129,25,EBCI,EHAM,"[com.morapack.ga.Vuelo@2c9f9fb0, com.morapack.ga.Vuelo@2ef5e5e3, com.morapack.ga.Vuelo@36d4b5c, com.morapack.ga.Vuelo@6d00a15d, com.morapack.ga.Vuelo@51efea79]",158,30,1.79
-0000129,25,EBCI,EHAM,"[com.morapack.ga.Vuelo@5034c75a, com.morapack.ga.Vuelo@396a51ab, com.morapack.ga.Vuelo@51081592, com.morapack.ga.Vuelo@59f95c5d, com.morapack.ga.Vuelo@7f9a81e8]",30,0,2.17
-0000130,25,UBBB,VIDP,"[com.morapack.ga.Vuelo@9629756, com.morapack.ga.Vuelo@62ee68d8, com.morapack.ga.Vuelo@735b5592, com.morapack.ga.Vuelo@58651fd0, com.morapack.ga.Vuelo@59a6e353]",189,0,1.96
-0000131,26,UBBB,OSDI,"[com.morapack.ga.Vuelo@4520ebad, com.morapack.ga.Vuelo@5419f379, com.morapack.ga.Vuelo@7dc7cbad, com.morapack.ga.Vuelo@5680a178, com.morapack.ga.Vuelo@d2cc05a]",158,31,1.96
-0000131,26,UBBB,OSDI,"[com.morapack.ga.Vuelo@4f933fd1, com.morapack.ga.Vuelo@548a9f61, com.morapack.ga.Vuelo@1753acfe, com.morapack.ga.Vuelo@7c16905e, com.morapack.ga.Vuelo@2a2d45ba]",31,0,1.96
-0000132,26,UBBB,OERK,"[com.morapack.ga.Vuelo@1055e4af, com.morapack.ga.Vuelo@2a5ca609, com.morapack.ga.Vuelo@20e2cbe0, com.morapack.ga.Vuelo@68be2bc2, com.morapack.ga.Vuelo@1c6b6478]",153,37,2.35
-0000132,26,UBBB,OERK,"[com.morapack.ga.Vuelo@277c0f21, com.morapack.ga.Vuelo@28feb3fa, com.morapack.ga.Vuelo@675d3402, com.morapack.ga.Vuelo@58d25a40, com.morapack.ga.Vuelo@79698539]",37,0,2.33
-0000133,26,UBBB,OOMS,"[com.morapack.ga.Vuelo@51565ec2, com.morapack.ga.Vuelo@482f8f11, com.morapack.ga.Vuelo@1593948d, com.morapack.ga.Vuelo@1b604f19, com.morapack.ga.Vuelo@4141d797]",190,0,1.79
-0000134,26,UBBB,OYSN,"[com.morapack.ga.Vuelo@7823a2f9, com.morapack.ga.Vuelo@4cc0edeb, com.morapack.ga.Vuelo@457e2f02, com.morapack.ga.Vuelo@5c7fa833, com.morapack.ga.Vuelo@39aeed2f]",191,0,1.96
-0000135,26,UBBB,OMDB,"[com.morapack.ga.Vuelo@724af044, com.morapack.ga.Vuelo@4678c730, com.morapack.ga.Vuelo@6767c1fc, com.morapack.ga.Vuelo@c818063, com.morapack.ga.Vuelo@29ee9faa]",132,59,1.79
-0000135,26,UBBB,OMDB,"[com.morapack.ga.Vuelo@c038203, com.morapack.ga.Vuelo@cc285f4, com.morapack.ga.Vuelo@55f3ddb1, com.morapack.ga.Vuelo@234bef66, com.morapack.ga.Vuelo@8bd1b6a]",59,0,2.17
-0000136,27,UBBB,OJAI,"[com.morapack.ga.Vuelo@18be83e4, com.morapack.ga.Vuelo@cb5822, com.morapack.ga.Vuelo@4b9e13df, com.morapack.ga.Vuelo@2b98378d, com.morapack.ga.Vuelo@3ada9e37]",102,90,1.96
-0000136,27,UBBB,OJAI,"[com.morapack.ga.Vuelo@475530b9, com.morapack.ga.Vuelo@1d057a39, com.morapack.ga.Vuelo@26be92ad, com.morapack.ga.Vuelo@4c70fda8, com.morapack.ga.Vuelo@224edc67]",90,0,2.17
-0000137,27,EBCI,UMMS,"[com.morapack.ga.Vuelo@506e6d5e, com.morapack.ga.Vuelo@14acaea5, com.morapack.ga.Vuelo@629f0666, com.morapack.ga.Vuelo@ea30797, com.morapack.ga.Vuelo@46d56d67]",12,180,2.63
-0000137,27,EBCI,UMMS,"[com.morapack.ga.Vuelo@d8355a8, com.morapack.ga.Vuelo@59fa1d9b, com.morapack.ga.Vuelo@28d25987, com.morapack.ga.Vuelo@3834d63f, com.morapack.ga.Vuelo@4501b7af]",136,44,2.17
-0000137,27,EBCI,UMMS,"[com.morapack.ga.Vuelo@523884b2, com.morapack.ga.Vuelo@5b275dab, com.morapack.ga.Vuelo@61832929, com.morapack.ga.Vuelo@29774679, com.morapack.ga.Vuelo@3ffc5af1]",44,0,1.96
-0000138,27,SPIM,SVMI,"[com.morapack.ga.Vuelo@5e5792a0, com.morapack.ga.Vuelo@2a098129, com.morapack.ga.Vuelo@531be3c5, com.morapack.ga.Vuelo@26653222, com.morapack.ga.Vuelo@4bf558aa]",12,181,2.44
-0000138,27,SPIM,SVMI,"[com.morapack.ga.Vuelo@46f5f779, com.morapack.ga.Vuelo@53bd815b, com.morapack.ga.Vuelo@3532ec19, com.morapack.ga.Vuelo@68c4039c, com.morapack.ga.Vuelo@2db0f6b2]",181,0,1.79
-0000139,27,SPIM,SKBO,"[com.morapack.ga.Vuelo@ae45eb6, com.morapack.ga.Vuelo@59f99ea, com.morapack.ga.Vuelo@56f4468b, com.morapack.ga.Vuelo@27efef64, com.morapack.ga.Vuelo@614c5515]",141,52,1.72
-0000139,27,SPIM,SKBO,"[com.morapack.ga.Vuelo@6bdf28bb, com.morapack.ga.Vuelo@6f7fd0e6, com.morapack.ga.Vuelo@47c62251, com.morapack.ga.Vuelo@3e6fa38a, com.morapack.ga.Vuelo@66a3ffec]",52,0,2.33
-0000140,27,SPIM,SEQM,"[com.morapack.ga.Vuelo@77caeb3e, com.morapack.ga.Vuelo@1e88b3c, com.morapack.ga.Vuelo@42d80b78, com.morapack.ga.Vuelo@3bfdc050, com.morapack.ga.Vuelo@1bce4f0a]",194,0,1.89
-0000141,28,SPIM,SBBR,"[com.morapack.ga.Vuelo@5e3a8624, com.morapack.ga.Vuelo@366e2eef, com.morapack.ga.Vuelo@5c3bd550, com.morapack.ga.Vuelo@91161c7, com.morapack.ga.Vuelo@604ed9f0]",194,0,2.44
-0000142,28,SPIM,SLLP,"[com.morapack.ga.Vuelo@506e6d5e, com.morapack.ga.Vuelo@6a4f787b, com.morapack.ga.Vuelo@685cb137, com.morapack.ga.Vuelo@180bc464, com.morapack.ga.Vuelo@6a41eaa2]",179,16,2.44
-0000142,28,SPIM,SLLP,"[com.morapack.ga.Vuelo@7cd62f43, com.morapack.ga.Vuelo@47f37ef1, com.morapack.ga.Vuelo@6d4b1c02, com.morapack.ga.Vuelo@6093dd95, com.morapack.ga.Vuelo@5622fdf]",16,0,2.63
-0000143,28,SPIM,SCEL,"[com.morapack.ga.Vuelo@4883b407, com.morapack.ga.Vuelo@7d9d1a19, com.morapack.ga.Vuelo@39c0f4a, com.morapack.ga.Vuelo@327471b5, com.morapack.ga.Vuelo@3ac3fd8b]",120,75,1.80
-0000143,28,SPIM,SCEL,"[com.morapack.ga.Vuelo@490d6c15, com.morapack.ga.Vuelo@1794d431, com.morapack.ga.Vuelo@68fb2c38, com.morapack.ga.Vuelo@42e26948, com.morapack.ga.Vuelo@57baeedf]",75,0,1.89
-0000144,28,SPIM,SABE,"[com.morapack.ga.Vuelo@343f4d3d, com.morapack.ga.Vuelo@53b32d7, com.morapack.ga.Vuelo@65ae6ba4, com.morapack.ga.Vuelo@51efea79, com.morapack.ga.Vuelo@5442a311]",142,54,1.96
-0000144,28,SPIM,SABE,"[com.morapack.ga.Vuelo@548e7350, com.morapack.ga.Vuelo@1a968a59, com.morapack.ga.Vuelo@4667ae56, com.morapack.ga.Vuelo@77cd7a0, com.morapack.ga.Vuelo@204f30ec]",54,0,1.96
-0000145,28,SPIM,SGAS,"[com.morapack.ga.Vuelo@16b4a017, com.morapack.ga.Vuelo@e25b2fe, com.morapack.ga.Vuelo@754ba872, com.morapack.ga.Vuelo@146ba0ac, com.morapack.ga.Vuelo@4dfa3a9d]",189,7,1.79
-0000145,28,SPIM,SGAS,"[com.morapack.ga.Vuelo@6eebc39e, com.morapack.ga.Vuelo@136432db, com.morapack.ga.Vuelo@464bee09, com.morapack.ga.Vuelo@f6c48ac, com.morapack.ga.Vuelo@13deb50e]",7,0,1.64
-0000146,29,SPIM,SUAA,"[com.morapack.ga.Vuelo@e580929, com.morapack.ga.Vuelo@239963d8, com.morapack.ga.Vuelo@721e0f4f, com.morapack.ga.Vuelo@3abbfa04, com.morapack.ga.Vuelo@57fffcd7]",1,196,1.79
-0000146,29,SPIM,SUAA,"[com.morapack.ga.Vuelo@5d22bbb7, com.morapack.ga.Vuelo@31ef45e3, com.morapack.ga.Vuelo@598067a5, com.morapack.ga.Vuelo@3c0ecd4b, com.morapack.ga.Vuelo@14bf9759]",196,0,1.96
-0000147,29,EBCI,LATI,"[com.morapack.ga.Vuelo@5f341870, com.morapack.ga.Vuelo@3c756e4d, com.morapack.ga.Vuelo@553f17c, com.morapack.ga.Vuelo@4f8e5cde, com.morapack.ga.Vuelo@769c9116]",134,63,1.79
-0000147,29,EBCI,LATI,"[com.morapack.ga.Vuelo@16f65612, com.morapack.ga.Vuelo@6767c1fc, com.morapack.ga.Vuelo@4f7d0008, com.morapack.ga.Vuelo@3caeaf62, com.morapack.ga.Vuelo@1ef7fe8e]",63,0,2.17
-0000148,29,EBCI,EDDI,"[com.morapack.ga.Vuelo@271053e1, com.morapack.ga.Vuelo@589838eb, com.morapack.ga.Vuelo@24273305, com.morapack.ga.Vuelo@42dafa95, com.morapack.ga.Vuelo@6500df86]",94,104,1.82
-0000148,29,EBCI,EDDI,"[com.morapack.ga.Vuelo@2ef5e5e3, com.morapack.ga.Vuelo@6e3c1e69, com.morapack.ga.Vuelo@7cd62f43, com.morapack.ga.Vuelo@402a079c, com.morapack.ga.Vuelo@59ec2012]",104,0,1.87
-0000149,29,EBCI,LOWW,"[com.morapack.ga.Vuelo@4cf777e8, com.morapack.ga.Vuelo@2f686d1f, com.morapack.ga.Vuelo@3fee9989, com.morapack.ga.Vuelo@73ad2d6, com.morapack.ga.Vuelo@7085bdee]",198,0,1.79
-0000150,29,EBCI,LKPR,"[com.morapack.ga.Vuelo@606d8acf, com.morapack.ga.Vuelo@1ce92674, com.morapack.ga.Vuelo@5700d6b1, com.morapack.ga.Vuelo@6fd02e5, com.morapack.ga.Vuelo@5bcab519]",179,20,2.17
-0000150,29,EBCI,LKPR,"[com.morapack.ga.Vuelo@e45f292, com.morapack.ga.Vuelo@1fbc7afb, com.morapack.ga.Vuelo@5f2108b5, com.morapack.ga.Vuelo@31a5c39e, com.morapack.ga.Vuelo@3f49dace]",20,0,1.96
-0000151,30,EBCI,LDZA,"[com.morapack.ga.Vuelo@1e397ed7, com.morapack.ga.Vuelo@4926097b, com.morapack.ga.Vuelo@490ab905, com.morapack.ga.Vuelo@56ac3a89, com.morapack.ga.Vuelo@27c20538]",54,145,1.79
-0000151,30,EBCI,LDZA,"[com.morapack.ga.Vuelo@72d818d1, com.morapack.ga.Vuelo@6e06451e, com.morapack.ga.Vuelo@59494225, com.morapack.ga.Vuelo@6e1567f1, com.morapack.ga.Vuelo@5cb9f472]",145,0,2.06
-0000152,30,EBCI,EKCH,"[com.morapack.ga.Vuelo@cb644e, com.morapack.ga.Vuelo@13805618, com.morapack.ga.Vuelo@56ef9176, com.morapack.ga.Vuelo@4566e5bd, com.morapack.ga.Vuelo@1c53fd30]",200,0,1.96
-0000153,30,EBCI,EHAM,"[com.morapack.ga.Vuelo@1ed4004b, com.morapack.ga.Vuelo@ff5b51f, com.morapack.ga.Vuelo@25bbe1b6, com.morapack.ga.Vuelo@5702b3b1, com.morapack.ga.Vuelo@4909b8da]",200,0,1.96
-0000154,30,UBBB,VIDP,"[com.morapack.ga.Vuelo@69ea3742, com.morapack.ga.Vuelo@4b952a2d, com.morapack.ga.Vuelo@13b6d03, com.morapack.ga.Vuelo@3830f1c0, com.morapack.ga.Vuelo@3159c4b8]",160,41,2.17
-0000154,30,UBBB,VIDP,"[com.morapack.ga.Vuelo@73846619, com.morapack.ga.Vuelo@7e0babb1, com.morapack.ga.Vuelo@4bec1f0c, com.morapack.ga.Vuelo@3f2a3a5, com.morapack.ga.Vuelo@29ee9faa]",41,0,2.17
-0000155,30,UBBB,OSDI,"[com.morapack.ga.Vuelo@29ca901e, com.morapack.ga.Vuelo@2280cdac, com.morapack.ga.Vuelo@5649fd9b, com.morapack.ga.Vuelo@6adede5, com.morapack.ga.Vuelo@2d928643]",193,8,2.17
-0000155,30,UBBB,OSDI,"[com.morapack.ga.Vuelo@5025a98f, com.morapack.ga.Vuelo@49993335, com.morapack.ga.Vuelo@20322d26, com.morapack.ga.Vuelo@192b07fd, com.morapack.ga.Vuelo@277c0f21]",8,0,1.96
+0000006,1,EBCI,EHAM,"[com.morapack.ga.Vuelo@5e8c92f4]",130,0,0.8832
+0000003,1,UBBB,VIDP,"[com.morapack.ga.Vuelo@51521cc1, com.morapack.ga.Vuelo@1b4fb997]",130,0,2.8801
+0000001,1,EBCI,UMMS,"[com.morapack.ga.Vuelo@deb6432]",129,0,1.8863
+0000004,1,SPIM,SKBO,"[com.morapack.ga.Vuelo@28ba21f3, com.morapack.ga.Vuelo@694f9431]",130,0,2.4501
+0000005,1,SPIM,SEQM,"[com.morapack.ga.Vuelo@f2a0b8e]",130,0,2.2306
+0000002,1,UBBB,OAKB,"[com.morapack.ga.Vuelo@593634ad]",129,0,1.6963
+0000007,1,EBCI,LBSF,"[com.morapack.ga.Vuelo@20fa23c1]",130,0,2.7482
+0000010,2,SPIM,SVMI,"[com.morapack.ga.Vuelo@3581c5f3]",132,0,3.8339
+0000013,2,UBBB,OSDI,"[com.morapack.ga.Vuelo@6aa8ceb6]",132,0,2.2393
+0000008,2,EBCI,UMMS,"[com.morapack.ga.Vuelo@2530c12]",131,0,2.0687
+0000012,2,UBBB,OERK,"[com.morapack.ga.Vuelo@73c6c3b2]",132,0,1.5730
+0000011,2,UBBB,VIDP,"[com.morapack.ga.Vuelo@48533e64, com.morapack.ga.Vuelo@1b4fb997]",132,0,2.7827
+0000009,2,EBCI,LBSF,"[com.morapack.ga.Vuelo@64a294a6]",131,0,1.8597
+0000018,3,EBCI,LKPR,"[com.morapack.ga.Vuelo@1b4fb997]",38,97,0.9525
+0000018,3,EBCI,LKPR,"[com.morapack.ga.Vuelo@7e0b37bc]",97,0,1.2004
+0000016,3,UBBB,OAKB,"[com.morapack.ga.Vuelo@3b95a09c]",134,0,1.6963
+0000014,3,EBCI,EKCH,"[com.morapack.ga.Vuelo@6ae40994]",134,0,1.4763
+0000017,3,EBCI,LATI,"[com.morapack.ga.Vuelo@1a93a7ca]",134,0,2.0384
+0000015,3,EBCI,EKCH,"[com.morapack.ga.Vuelo@6ae40994]",134,0,1.4763
+0000019,3,UBBB,OPKC,"[com.morapack.ga.Vuelo@3d82c5f3]",135,0,3.7873
+0000021,4,SPIM,SEQM,"[com.morapack.ga.Vuelo@f2a0b8e]",136,0,2.2306
+0000023,4,UBBB,OSDI,"[com.morapack.ga.Vuelo@2b05039f]",137,0,2.3216
+0000024,4,EBCI,EDDI,"[com.morapack.ga.Vuelo@61e717c2]",137,0,1.3455
+0000020,4,UBBB,OAKB,"[com.morapack.ga.Vuelo@66cd51c3, com.morapack.ga.Vuelo@4dcbadb4]",136,0,2.8995
+0000022,4,SPIM,SGAS,"[com.morapack.ga.Vuelo@4e515669]",137,0,2.7738
+0000025,4,SPIM,SEQM,"[com.morapack.ga.Vuelo@f2a0b8e]",54,83,2.2306
+0000025,4,SPIM,SEQM,"[com.morapack.ga.Vuelo@17d10166]",83,0,1.9008
+0000028,5,UBBB,VIDP,"[com.morapack.ga.Vuelo@1b9e1916]",139,0,4.0578
+0000026,5,EBCI,LBSF,"[com.morapack.ga.Vuelo@ba8a1dc]",139,0,2.3773
+0000029,5,UBBB,OPKC,"[com.morapack.ga.Vuelo@4f8e5cde]",140,0,1.9563
+0000027,5,EBCI,EHAM,"[com.morapack.ga.Vuelo@5e8c92f4]",139,0,0.8832
+0000030,5,SPIM,SBBR,"[com.morapack.ga.Vuelo@504bae78]",140,0,4.4645
+0000031,6,SPIM,SLLP,"[com.morapack.ga.Vuelo@3b764bce]",141,0,2.1269
+0000033,6,SPIM,SABE,"[com.morapack.ga.Vuelo@3b764bce]",142,0,2.1269
+0000034,6,SPIM,SGAS,"[com.morapack.ga.Vuelo@759ebb3d, com.morapack.ga.Vuelo@484b61fc]",142,0,2.8341
+0000032,6,SPIM,SCEL,"[com.morapack.ga.Vuelo@45fe3ee3]",141,0,2.7592
+0000035,6,SPIM,SUAA,"[com.morapack.ga.Vuelo@4cdf35a9]",142,0,3.4614
+0000039,7,EBCI,LKPR,"[com.morapack.ga.Vuelo@4c98385c]",144,0,1.2963
+0000036,7,EBCI,LATI,"[com.morapack.ga.Vuelo@5fcfe4b2]",143,0,2.2465
+0000038,7,EBCI,LOWW,"[com.morapack.ga.Vuelo@6bf2d08e]",144,0,1.3858
+0000040,7,EBCI,LDZA,"[com.morapack.ga.Vuelo@5eb5c224]",144,0,1.7103
+0000037,7,EBCI,EDDI,"[com.morapack.ga.Vuelo@53e25b76]",143,0,1.2041
+0000041,8,EBCI,EKCH,"[com.morapack.ga.Vuelo@6ae40994]",72,74,1.4763
+0000041,8,EBCI,EKCH,"[com.morapack.ga.Vuelo@73a8dfcc]",74,0,1.4763
+0000043,8,UBBB,VIDP,"[com.morapack.ga.Vuelo@ea30797]",146,0,2.4742
+0000045,8,UBBB,OERK,"[com.morapack.ga.Vuelo@7e774085]",147,0,2.4374
+0000042,8,EBCI,EHAM,"[com.morapack.ga.Vuelo@5e8c92f4]",91,55,0.8832
+0000042,8,EBCI,EHAM,"[com.morapack.ga.Vuelo@3f8f9dd6]",55,0,0.8832
+0000044,8,UBBB,OSDI,"[com.morapack.ga.Vuelo@6aa8ceb6]",147,0,2.2393
+0000050,9,EBCI,UMMS,"[com.morapack.ga.Vuelo@aec6354]",149,0,2.7141
+0000048,9,UBBB,OMDB,"[com.morapack.ga.Vuelo@1c655221]",149,0,2.4997
+0000047,9,UBBB,OYSN,"[com.morapack.ga.Vuelo@58d25a40]",148,0,3.7466
+0000049,9,UBBB,OJAI,"[com.morapack.ga.Vuelo@1b701da1]",149,0,2.6710
+0000046,9,UBBB,OOMS,"[com.morapack.ga.Vuelo@726f3b58]",148,0,3.0982
+0000055,10,EBCI,LDZA,"[com.morapack.ga.Vuelo@442d9b6e]",151,0,1.1346
+0000052,10,EBCI,EDDI,"[com.morapack.ga.Vuelo@61e717c2]",150,0,1.3455
+0000054,10,EBCI,LKPR,"[com.morapack.ga.Vuelo@ee7d9f1]",151,0,1.3858
+0000051,10,EBCI,LATI,"[com.morapack.ga.Vuelo@15615099]",150,0,1.7809
+0000053,10,EBCI,LOWW,"[com.morapack.ga.Vuelo@1edf1c96]",151,0,1.6042
+0000059,11,UBBB,OSDI,"[com.morapack.ga.Vuelo@2b05039f]",153,0,2.3216
+0000056,11,EBCI,EKCH,"[com.morapack.ga.Vuelo@73a8dfcc]",152,0,1.4763
+0000058,11,UBBB,VIDP,"[com.morapack.ga.Vuelo@368102c8, com.morapack.ga.Vuelo@ee7d9f1]",149,4,2.4673
+0000058,11,UBBB,VIDP,"[com.morapack.ga.Vuelo@6996db8]",4,0,3.1280
+0000060,11,UBBB,OERK,"[com.morapack.ga.Vuelo@1963006a]",154,0,2.6535
+0000057,11,EBCI,EHAM,"[com.morapack.ga.Vuelo@3f8f9dd6]",152,0,0.8832
+0000064,12,UBBB,OJAI,"[com.morapack.ga.Vuelo@7fbe847c]",156,0,2.5263
+0000061,12,UBBB,OOMS,"[com.morapack.ga.Vuelo@41975e01]",154,0,1.6030
+0000063,12,UBBB,OMDB,"[com.morapack.ga.Vuelo@c2e1f26]",155,0,2.9941
+0000065,12,EBCI,UMMS,"[com.morapack.ga.Vuelo@aec6354]",151,5,2.7141
+0000065,12,EBCI,UMMS,"[com.morapack.ga.Vuelo@dcf3e99]",5,0,2.7141
+0000062,12,UBBB,OYSN,"[com.morapack.ga.Vuelo@6d9c638]",155,0,2.9810
+0000069,13,SPIM,SBBR,"[com.morapack.ga.Vuelo@504bae78]",158,0,4.4645
+0000066,13,SPIM,SVMI,"[com.morapack.ga.Vuelo@7dc5e7b4]",157,0,3.4573
+0000068,13,SPIM,SEQM,"[com.morapack.ga.Vuelo@1ee0005]",158,0,2.1848
+0000070,13,SPIM,SLLP,"[com.morapack.ga.Vuelo@3b764bce]",17,142,2.1269
+0000070,13,SPIM,SLLP,"[com.morapack.ga.Vuelo@75a1cd57]",142,0,2.1269
+0000067,13,SPIM,SKBO,"[com.morapack.ga.Vuelo@3d012ddd]",157,0,2.7592
+0000072,14,SPIM,SABE,"[com.morapack.ga.Vuelo@6f2b958e]",160,0,0.8684
+0000074,14,SPIM,SUAA,"[com.morapack.ga.Vuelo@1eb44e46, com.morapack.ga.Vuelo@6504e3b2]",161,0,4.1164
+0000071,14,SPIM,SCEL,"[com.morapack.ga.Vuelo@515f550a]",159,0,3.5362
+0000073,14,SPIM,SGAS,"[com.morapack.ga.Vuelo@626b2d4a]",160,0,2.0941
+0000075,14,EBCI,LATI,"[com.morapack.ga.Vuelo@5e91993f]",161,0,2.0150
+0000077,15,EBCI,LOWW,"[com.morapack.ga.Vuelo@1c4af82c]",162,0,1.1292
+0000079,15,EBCI,LDZA,"[com.morapack.ga.Vuelo@5eb5c224]",163,0,1.7103
+0000076,15,EBCI,EDDI,"[com.morapack.ga.Vuelo@61e717c2]",73,89,1.3455
+0000076,15,EBCI,EDDI,"[com.morapack.ga.Vuelo@379619aa]",89,0,1.3455
+0000078,15,EBCI,LKPR,"[com.morapack.ga.Vuelo@cac736f]",163,0,1.3858
+0000080,15,EBCI,EKCH,"[com.morapack.ga.Vuelo@5e265ba4]",164,0,1.2041
+0000082,16,UBBB,VIDP,"[com.morapack.ga.Vuelo@156643d4]",165,0,1.7096
+0000084,16,UBBB,OERK,"[com.morapack.ga.Vuelo@1963006a]",166,0,2.6535
+0000081,16,EBCI,EHAM,"[com.morapack.ga.Vuelo@3f8f9dd6]",113,51,0.8832
+0000081,16,EBCI,EHAM,"[com.morapack.ga.Vuelo@123a439b]",51,0,1.0599
+0000083,16,UBBB,OSDI,"[com.morapack.ga.Vuelo@2b05039f]",70,95,2.3216
+0000083,16,UBBB,OSDI,"[com.morapack.ga.Vuelo@7de26db8]",95,0,2.3216
+0000085,16,UBBB,OOMS,"[com.morapack.ga.Vuelo@726f3b58]",166,0,3.0982
+0000089,17,EBCI,UMMS,"[com.morapack.ga.Vuelo@dcf3e99]",168,0,2.7141
+0000086,17,UBBB,OYSN,"[com.morapack.ga.Vuelo@1175e2db]",167,0,2.9941
+0000088,17,UBBB,OJAI,"[com.morapack.ga.Vuelo@1b701da1]",151,17,2.6710
+0000088,17,UBBB,OJAI,"[com.morapack.ga.Vuelo@36aa7bc2]",17,0,1.0564
+0000090,17,SPIM,SVMI,"[com.morapack.ga.Vuelo@3581c5f3]",169,0,3.8339
+0000087,17,UBBB,OMDB,"[com.morapack.ga.Vuelo@76ccd017]",167,0,1.2095
+0000094,18,SPIM,SLLP,"[com.morapack.ga.Vuelo@75a1cd57]",171,0,2.1269
+0000091,18,SPIM,SKBO,"[com.morapack.ga.Vuelo@3d012ddd]",169,0,2.7592
+0000093,18,SPIM,SBBR,"[com.morapack.ga.Vuelo@504bae78]",2,168,4.4645
+0000093,18,SPIM,SBBR,"[com.morapack.ga.Vuelo@182decdb]",168,0,3.0809
+0000095,18,SPIM,SCEL,"[com.morapack.ga.Vuelo@515f550a]",171,0,3.5362
+0000092,18,SPIM,SEQM,"[com.morapack.ga.Vuelo@26f0a63f]",170,0,2.2306
+0000097,19,SPIM,SGAS,"[com.morapack.ga.Vuelo@4361bd48]",172,0,3.1531
+0000099,19,EBCI,LATI,"[com.morapack.ga.Vuelo@5fcfe4b2]",173,0,2.2465
+0000096,19,SPIM,SABE,"[com.morapack.ga.Vuelo@53bd815b]",172,0,4.2244
+0000098,19,SPIM,SUAA,"[com.morapack.ga.Vuelo@2401f4c3]",173,0,4.4011
+0000100,19,EBCI,EDDI,"[com.morapack.ga.Vuelo@7637f22]",174,0,1.1146
+0000102,20,EBCI,LKPR,"[com.morapack.ga.Vuelo@cac736f]",137,38,1.3858
+0000102,20,EBCI,LKPR,"[com.morapack.ga.Vuelo@4dcbadb4]",38,0,1.3858
+0000104,20,EBCI,EKCH,"[com.morapack.ga.Vuelo@73a8dfcc]",134,42,1.4763
+0000104,20,EBCI,EKCH,"[com.morapack.ga.Vuelo@4926097b]",42,0,1.2963
+0000101,20,EBCI,LOWW,"[com.morapack.ga.Vuelo@1edf1c96]",174,0,1.6042
+0000103,20,EBCI,LDZA,"[com.morapack.ga.Vuelo@5eb5c224]",33,142,1.7103
+0000103,20,EBCI,LDZA,"[com.morapack.ga.Vuelo@762efe5d]",142,0,1.6462
+0000105,20,EBCI,EHAM,"[com.morapack.ga.Vuelo@123a439b]",176,0,1.0599
+0000107,21,UBBB,OSDI,"[com.morapack.ga.Vuelo@7de26db8]",177,0,2.3216
+0000109,21,UBBB,OOMS,"[com.morapack.ga.Vuelo@5d22bbb7]",178,0,2.2427
+0000106,21,UBBB,VIDP,"[com.morapack.ga.Vuelo@7e0b37bc, com.morapack.ga.Vuelo@41a4555e]",177,0,3.0458
+0000108,21,UBBB,OERK,"[com.morapack.ga.Vuelo@1963006a]",20,158,2.6535
+0000108,21,UBBB,OERK,"[com.morapack.ga.Vuelo@3830f1c0]",158,0,2.0708
+0000110,21,UBBB,OYSN,"[com.morapack.ga.Vuelo@1175e2db]",133,46,2.9941
+0000110,21,UBBB,OYSN,"[com.morapack.ga.Vuelo@58d25a40]",46,0,3.7466
+0000112,22,UBBB,OJAI,"[com.morapack.ga.Vuelo@36aa7bc2]",180,0,1.0564
+0000114,22,SPIM,SVMI,"[com.morapack.ga.Vuelo@39ed3c8d, com.morapack.ga.Vuelo@71dac704]",181,0,3.2690
+0000111,22,UBBB,OMDB,"[com.morapack.ga.Vuelo@c2e1f26]",179,0,2.9941
+0000113,22,EBCI,UMMS,"[com.morapack.ga.Vuelo@dcf3e99]",147,33,2.7141
+0000113,22,EBCI,UMMS,"[com.morapack.ga.Vuelo@123772c4]",33,0,1.0599
+0000115,22,SPIM,SKBO,"[com.morapack.ga.Vuelo@2d363fb3, com.morapack.ga.Vuelo@7d6f77cc]",181,0,2.6926
+0000117,23,SPIM,SBBR,"[com.morapack.ga.Vuelo@5aaa6d82]",182,0,4.4645
+0000119,23,SPIM,SCEL,"[com.morapack.ga.Vuelo@442d9b6e, com.morapack.ga.Vuelo@73a28541]",169,14,3.2946
+0000119,23,SPIM,SCEL,"[com.morapack.ga.Vuelo@6f75e721]",14,0,2.4474
+0000116,23,SPIM,SEQM,"[com.morapack.ga.Vuelo@26f0a63f]",130,52,2.2306
+0000116,23,SPIM,SEQM,"[com.morapack.ga.Vuelo@69222c14]",52,0,2.2306
+0000118,23,SPIM,SLLP,"[com.morapack.ga.Vuelo@75a1cd57]",7,176,2.1269
+0000118,23,SPIM,SLLP,"[com.morapack.ga.Vuelo@606d8acf]",176,0,2.1269
+0000120,23,SPIM,SABE,"[com.morapack.ga.Vuelo@53bd815b]",128,56,4.2244
+0000120,23,SPIM,SABE,"[com.morapack.ga.Vuelo@ea30797]",56,0,2.4742
+0000122,24,SPIM,SUAA,"[com.morapack.ga.Vuelo@782830e]",185,0,4.5531
+0000124,24,EBCI,EDDI,"[com.morapack.ga.Vuelo@379619aa]",186,0,1.3455
+0000121,24,SPIM,SGAS,"[com.morapack.ga.Vuelo@470e2030]",184,0,3.6129
+0000123,24,EBCI,LATI,"[com.morapack.ga.Vuelo@1edf1c96]",35,150,1.6042
+0000123,24,EBCI,LATI,"[com.morapack.ga.Vuelo@3fb4f649]",150,0,1.9297
+0000125,24,EBCI,LOWW,"[com.morapack.ga.Vuelo@33833882]",186,0,1.7809
+0000127,25,EBCI,LDZA,"[com.morapack.ga.Vuelo@484b61fc]",158,29,1.8869
+0000127,25,EBCI,LDZA,"[com.morapack.ga.Vuelo@200a570f]",29,0,1.8869
+0000129,25,EBCI,EHAM,"[com.morapack.ga.Vuelo@123a439b]",113,75,1.0599
+0000129,25,EBCI,EHAM,"[com.morapack.ga.Vuelo@123772c4]",75,0,1.0599
+0000126,25,EBCI,LKPR,"[com.morapack.ga.Vuelo@4dcbadb4]",126,61,1.3858
+0000126,25,EBCI,LKPR,"[com.morapack.ga.Vuelo@6bf2d08e]",61,0,1.3858
+0000128,25,EBCI,EKCH,"[com.morapack.ga.Vuelo@16b3fc9e]",188,0,1.4763
+0000130,25,UBBB,VIDP,"[com.morapack.ga.Vuelo@1b9e1916]",181,8,4.0578
+0000130,25,UBBB,VIDP,"[com.morapack.ga.Vuelo@e2d56bf, com.morapack.ga.Vuelo@244038d0]",8,0,3.5396
+0000132,26,UBBB,OERK,"[com.morapack.ga.Vuelo@5680a178]",190,0,2.6535
+0000134,26,UBBB,OYSN,"[com.morapack.ga.Vuelo@5fdef03a, com.morapack.ga.Vuelo@3b22cdd0]",191,0,3.3235
+0000131,26,UBBB,OSDI,"[com.morapack.ga.Vuelo@1e81f4dc]",189,0,2.0708
+0000133,26,UBBB,OOMS,"[com.morapack.ga.Vuelo@726f3b58]",46,144,3.0982
+0000133,26,UBBB,OOMS,"[com.morapack.ga.Vuelo@6aa8ceb6]",61,83,2.2393
+0000133,26,UBBB,OOMS,"[com.morapack.ga.Vuelo@4d591d15]",83,0,3.2749
+0000135,26,UBBB,OMDB,"[com.morapack.ga.Vuelo@c2e1f26]",26,165,2.9941
+0000135,26,UBBB,OMDB,"[com.morapack.ga.Vuelo@65ae6ba4]",165,0,1.2963
+0000137,27,EBCI,UMMS,"[com.morapack.ga.Vuelo@48cf768c]",192,0,2.7141
+0000139,27,SPIM,SKBO,"[com.morapack.ga.Vuelo@3d012ddd]",14,179,2.7592
+0000139,27,SPIM,SKBO,"[com.morapack.ga.Vuelo@59f95c5d]",179,0,1.9297
+0000136,27,UBBB,OJAI,"[com.morapack.ga.Vuelo@36aa7bc2]",163,29,1.0564
+0000136,27,UBBB,OJAI,"[com.morapack.ga.Vuelo@7de26db8]",29,0,2.3216
+0000138,27,SPIM,SVMI,"[com.morapack.ga.Vuelo@5ccd43c2]",193,0,3.7278
+0000140,27,SPIM,SEQM,"[com.morapack.ga.Vuelo@69222c14]",194,0,2.2306
+0000142,28,SPIM,SLLP,"[com.morapack.ga.Vuelo@606d8acf]",124,71,2.1269
+0000142,28,SPIM,SLLP,"[com.morapack.ga.Vuelo@4aa8f0b4]",71,0,2.1269
+0000144,28,SPIM,SABE,"[com.morapack.ga.Vuelo@7960847b]",196,0,4.2244
+0000141,28,SPIM,SBBR,"[com.morapack.ga.Vuelo@6a6824be]",194,0,3.0609
+0000143,28,SPIM,SCEL,"[com.morapack.ga.Vuelo@5c8da962]",195,0,1.8372
+0000145,28,SPIM,SGAS,"[com.morapack.ga.Vuelo@470e2030]",136,60,3.6129
+0000145,28,SPIM,SGAS,"[com.morapack.ga.Vuelo@512ddf17]",60,0,1.5705
+0000147,29,EBCI,LATI,"[com.morapack.ga.Vuelo@5fcfe4b2]",24,173,2.2465
+0000147,29,EBCI,LATI,"[com.morapack.ga.Vuelo@2c13da15]",173,0,2.2465
+0000149,29,EBCI,LOWW,"[com.morapack.ga.Vuelo@51521cc1]",190,8,1.7154
+0000149,29,EBCI,LOWW,"[com.morapack.ga.Vuelo@33833882]",8,0,1.7809
+0000146,29,SPIM,SUAA,"[com.morapack.ga.Vuelo@77556fd]",197,0,3.2490
+0000148,29,EBCI,EDDI,"[com.morapack.ga.Vuelo@379619aa]",25,173,1.3455
+0000148,29,EBCI,EDDI,"[com.morapack.ga.Vuelo@368239c8]",173,0,1.2041
+0000150,29,EBCI,LKPR,"[com.morapack.ga.Vuelo@6bf2d08e]",115,84,1.3858
+0000150,29,EBCI,LKPR,"[com.morapack.ga.Vuelo@9e89d68]",84,0,1.3455
+0000152,30,EBCI,EKCH,"[com.morapack.ga.Vuelo@16b3fc9e]",152,48,1.4763
+0000152,30,EBCI,EKCH,"[com.morapack.ga.Vuelo@3b192d32]",48,0,1.6530
+0000154,30,UBBB,VIDP,"[com.morapack.ga.Vuelo@16f65612]",201,0,4.2345
+0000151,30,EBCI,LDZA,"[com.morapack.ga.Vuelo@694f9431]",199,0,1.2345
+0000153,30,EBCI,EHAM,"[com.morapack.ga.Vuelo@123772c4]",200,0,1.0599
