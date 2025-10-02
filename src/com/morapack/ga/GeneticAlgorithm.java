@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,7 @@ public class GeneticAlgorithm {
     private int totalAsignados;
     private int totalPendientes;
     private int pedidosProcesados;
+    private final Map<String, Integer> baseCapacities = new HashMap<>();
 
     public GeneticAlgorithm(PlanningState planningState, SimClock clock, PlanLogger logger) {
         this.planningState = planningState;
@@ -99,8 +101,11 @@ public class GeneticAlgorithm {
 
         Map<String, Integer> capRest = planningState.flightCapacity();
         capRest.clear();
+        baseCapacities.clear();
         for (Vuelo vuelo : this.vuelosDisponibles) {
-            capRest.put(flightKey(vuelo), vuelo.capacidad);
+            String key = flightKey(vuelo);
+            capRest.put(key, vuelo.capacidad);
+            baseCapacities.put(key, vuelo.capacidad);
         }
 
         this.cache = new FlightCache(this.vuelosDisponibles);
@@ -157,13 +162,20 @@ public class GeneticAlgorithm {
         Map<String, Integer> capRest = planningState.flightCapacity();
 
         for (Pedido pedido : batch) {
-            if (pedido == null) {
+            if (pedido == null || pedido.isCancelled()) {
                 continue;
             }
-            pedidosProcesados++;
-            totalSolicitados += pedido.cantidad;
-            int restantes = pedido.cantidad;
+            if (pedido.markProcessedOnce()) {
+                pedidosProcesados++;
+                totalSolicitados += pedido.cantidad;
+            }
+            int restantes = pedido.getRemainingQuantity();
+            if (restantes <= 0) {
+                pedido.setAtRisk(false);
+                continue;
+            }
             int asignadosTotal = 0;
+            boolean assignedThisRun = false;
 
             while (restantes > 0) {
                 List<Chromosome> initialPopulation = PopulationInitializer.initForBatch(
@@ -207,8 +219,8 @@ public class GeneticAlgorithm {
                     break;
                 }
 
-                restantes -= asignados;
                 asignadosTotal += asignados;
+                assignedThisRun = true;
 
                 for (Vuelo vuelo : best.getRoute()) {
                     String key = flightKey(vuelo);
@@ -216,6 +228,7 @@ public class GeneticAlgorithm {
                 }
 
                 int arrivalMinute = best.getArrivalMinute();
+                int departureMinute = best.getDepartureMinute();
                 if (arrivalMinute >= 0 && destino != null) {
                     clock.advanceTo(arrivalMinute);
                     NavigableMap<Long, Integer> timeline = planningState.warehouseTimeline(pedido.destino);
@@ -224,10 +237,13 @@ public class GeneticAlgorithm {
                     }
                 }
 
+                pedido.addAssignment(best.getRoute(), departureMinute, arrivalMinute, asignados);
+                restantes = pedido.getRemainingQuantity();
+
                 if (assignmentWriter != null) {
                     assignmentWriter.printf("%s,%d,%s,%s,\"%s\",%d,%d,%.4f%n",
                             pedido.id, pedido.dia, pedido.hubOrigen, pedido.destino,
-                            best.getRoute().toString(), asignados, restantes, best.fitness);
+                            best.getRoute().toString(), asignados, pedido.getRemainingQuantity(), best.fitness);
                 }
 
                 logger.logMetric("pedido_asignado", asignados, clock.now());
@@ -238,7 +254,12 @@ public class GeneticAlgorithm {
             }
 
             totalAsignados += asignadosTotal;
-            totalPendientes += restantes;
+            totalPendientes += pedido.getRemainingQuantity();
+            if (pedido.isUrgent() && pedido.getRemainingQuantity() > 0) {
+                pedido.setAtRisk(true);
+            } else if (assignedThisRun && pedido.getRemainingQuantity() <= 0) {
+                pedido.setAtRisk(false);
+            }
         }
 
         if (assignmentWriter != null) {
