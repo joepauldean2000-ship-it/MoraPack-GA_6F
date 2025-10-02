@@ -1,6 +1,11 @@
 package com.morapack.ga;
-import java.util.*;
+
+import com.morapack.ga.core.PlanLogger;
+import com.morapack.ga.core.PlanningState;
+import com.morapack.ga.core.SimClock;
 import java.io.*;
+import java.util.*;
+
 public class GeneticAlgorithm {
     int populationSize = 30;
     double crossoverRate = 0.8;
@@ -8,16 +13,35 @@ public class GeneticAlgorithm {
     int maxGenerations = 50;
     int routeLength = 5;
 
+    private final PlanningState planningState;
+    private final SimClock clock;
+    private final PlanLogger logger;
+
+    public GeneticAlgorithm(PlanningState planningState, SimClock clock, PlanLogger logger) {
+        this.planningState = planningState;
+        this.clock = clock;
+        this.logger = logger;
+    }
+
+    private static String flightKey(Vuelo v) {
+        return String.valueOf(v.id);
+    }
+
     public void run(List<Vuelo> vuelosDisponibles, List<Pedido> pedidos,
                     Map<String, Aeropuerto> aeropuertos) {
 
-        Map<Integer,Integer> capRest = new HashMap<>();
-        for (Vuelo v : vuelosDisponibles) capRest.put(v.id, v.capacidad);
+        Map<String, Integer> capRest = planningState.flightCapacity();
+        capRest.clear();
+        for (Vuelo v : vuelosDisponibles) {
+            capRest.put(flightKey(v), v.capacidad);
+        }
 
         int totalSolicitados = 0, totalAsignados = 0, totalPendientes = 0;
 
         try (PrintWriter writer = new PrintWriter("plan_asignacion_GA.csv")) {
             writer.println("pedido_id,dia,hub_origen,destino,ruta,asignados,pendientes,fitness");
+
+            logger.logMetric("startup", 1.0, clock.now());
 
             for (Pedido p : pedidos) {
                 totalSolicitados += p.cantidad;
@@ -25,15 +49,15 @@ public class GeneticAlgorithm {
                 int asignadosTotal = 0;
 
                 while (restantes > 0) {
-                    Population pop = new Population(populationSize);
-                    pop.initialize(vuelosDisponibles, routeLength, p, aeropuertos, capRest);
+                    Population pop = new Population(populationSize, planningState);
+                    pop.initialize(vuelosDisponibles, routeLength, p, aeropuertos);
 
                     Chromosome best = pop.getBestChromosome();
 
                     // cuello de botella
                     int cuello = Integer.MAX_VALUE;
                     for (Vuelo v : best.route) {
-                        cuello = Math.min(cuello, capRest.getOrDefault(v.id, v.capacidad));
+                        cuello = Math.min(cuello, capRest.getOrDefault(flightKey(v), v.capacidad));
                     }
                     if (cuello <= 0) break;
 
@@ -43,7 +67,8 @@ public class GeneticAlgorithm {
 
                     // actualizar capacidades de vuelos
                     for (Vuelo v : best.route) {
-                        capRest.put(v.id, capRest.get(v.id) - asignados);
+                        String key = flightKey(v);
+                        capRest.put(key, capRest.get(key) - asignados);
                     }
 
 // ✅ nuevo: ocupar almacén destino por 2h
@@ -55,9 +80,10 @@ public class GeneticAlgorithm {
                             minutoLlegada += (int)(v.horasDuracion * 60);
                         }
                         // ocupar 2h = 120 minutos
-                        for (int m = minutoLlegada; m < minutoLlegada + 120; m++) {
-                            apDest.ocupacionPorMinuto.put(m,
-                                    apDest.ocupacionPorMinuto.getOrDefault(m, 0) + asignados);
+                        clock.advanceTo(minutoLlegada);
+                        java.util.NavigableMap<Long, Integer> timeline = planningState.warehouseTimeline(p.destino);
+                        for (long m = minutoLlegada; m < minutoLlegada + 120; m++) {
+                            timeline.put(m, timeline.getOrDefault(m, 0) + asignados);
                         }
                     }
 
@@ -65,6 +91,8 @@ public class GeneticAlgorithm {
                     writer.printf("%s,%d,%s,%s,\"%s\",%d,%d,%.2f%n",
                             p.id, p.dia, p.hubOrigen, p.destino,
                             best.route.toString(), asignados, restantes, best.fitness);
+
+                    logger.logMetric("pedido_asignado", asignados, clock.now());
 
                     if (restantes == 0) break;
                 }
