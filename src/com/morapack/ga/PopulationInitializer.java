@@ -17,16 +17,17 @@ public final class PopulationInitializer {
                                                   Heuristic heuristic,
                                                   List<Pedido> pedidos,
                                                   GraphVuelos graph,
-                                                  PlanningState planningState) {
+                                                  PlanningState planningState,
+                                                  FlightCache cache,
+                                                  Random rnd) {
         if (size <= 0) {
             return Collections.emptyList();
         }
         List<Chromosome> population = new ArrayList<>(size);
-        if (pedidos == null || pedidos.isEmpty() || graph == null) {
+        if (pedidos == null || pedidos.isEmpty() || graph == null || cache == null) {
             return population;
         }
 
-        Random rnd = new Random();
         int greedyTarget = (int) Math.ceil(size * 0.3);
         int attempts = 0;
         int maxAttempts = Math.max(size * 10, 30);
@@ -37,7 +38,7 @@ public final class PopulationInitializer {
                 break;
             }
             Pedido pedido = pedidos.get(rnd.nextInt(pedidos.size()));
-            Chromosome greedy = heuristic.buildGreedy(pedido, graph, planningState);
+            Chromosome greedy = heuristic.buildGreedy(pedido, graph, planningState, cache);
             if (greedy == null) {
                 continue;
             }
@@ -50,7 +51,7 @@ public final class PopulationInitializer {
 
         while (population.size() < size && attempts < maxAttempts) {
             attempts++;
-            Chromosome randomChromosome = Chromosome.randomInit(pedidos, graph, planningState, rnd);
+            Chromosome randomChromosome = Chromosome.randomInit(pedidos, graph, planningState, cache, rnd);
             if (randomChromosome == null) {
                 continue;
             }
@@ -65,7 +66,7 @@ public final class PopulationInitializer {
         while (population.size() < size && heuristic != null && attempts < maxAttempts) {
             attempts++;
             Pedido pedido = pedidos.get(rnd.nextInt(pedidos.size()));
-            Chromosome greedy = heuristic.buildGreedy(pedido, graph, planningState);
+            Chromosome greedy = heuristic.buildGreedy(pedido, graph, planningState, cache);
             if (greedy == null) {
                 continue;
             }

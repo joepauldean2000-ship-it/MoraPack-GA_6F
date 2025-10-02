@@ -22,7 +22,7 @@ public class Main {
              GaMetricsCsv gaMetricsCsv = new GaMetricsCsv(Paths.get("out/metrics_ga.csv"))) {
             PlanLogger logger = csvLogger;
             GeneticAlgorithm ga = new GeneticAlgorithm(planningState, clock, logger);
-            GAParams gaParams = new GAParams(80, 50, 3, 0.8, 0.2, 0.05);
+            GAParams gaParams = new GAParams(160, 200, 2, 0.9, 0.06, 0.02);
             ga.run(DataLoader.vuelos, DataLoader.pedidos, DataLoader.aeropuertos, gaParams, gaMetricsCsv, businessRules);
         } catch (Exception e) {
             e.printStackTrace();
