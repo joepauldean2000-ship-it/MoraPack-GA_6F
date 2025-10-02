@@ -22,11 +22,12 @@ public final class GaMetricsCsv implements Closeable, Flushable {
 
     public void logGaStats(GaStats stats) {
         if (!headerWritten) {
-            pw.println("gen,best,avg,worst,feasible,mutationRate,diversityIndex");
+            pw.println("gen,best,avg,worst,feasible,mutationRate,diversityIndex,p95Transit,p95Wait,p95Cost,maxHopsRef");
             headerWritten = true;
         }
         pw.println(stats.gen + "," + stats.best + "," + stats.avg + "," + stats.worst
-                + "," + stats.feasibleRatio + "," + stats.mutationRate + "," + stats.diversityIndex);
+                + "," + stats.feasibleRatio + "," + stats.mutationRate + "," + stats.diversityIndex
+                + "," + stats.p95Transit + "," + stats.p95Wait + "," + stats.p95Cost + "," + stats.maxHopsRef);
     }
 
     @Override

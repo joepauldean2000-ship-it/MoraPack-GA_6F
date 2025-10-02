@@ -1,6 +1,7 @@
 package com.morapack.ga;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,10 @@ public final class FlightCache {
     private final boolean[] intra;
     private final double maxCost;
     private final double maxDuration;
+    private final double p95TransitMinutes;
+    private final double p95WaitMinutes;
+    private final double p95RouteCost;
+    private final int maxHopsRef;
 
     public FlightCache(List<Vuelo> flights) {
         this.flights = new ArrayList<>(Objects.requireNonNull(flights, "flights"));
@@ -58,6 +63,23 @@ public final class FlightCache {
         }
         this.maxCost = localMaxCost <= 0 ? BASE_COST : localMaxCost;
         this.maxDuration = localMaxDuration <= 0 ? 60.0 : localMaxDuration;
+
+        this.p95TransitMinutes = computePercentile(durationMinutes, 0.95);
+        this.p95RouteCost = computePercentile(cost, 0.95);
+        List<Double> waitSamples = new ArrayList<>();
+        for (int i = 0; i < flights.size(); i++) {
+            Vuelo flight = flights.get(i);
+            List<Integer> candidates = outgoing.get(flight.destino);
+            if (candidates == null) {
+                continue;
+            }
+            for (int idx : candidates) {
+                waitSamples.add(waitingMinutes(i, idx));
+            }
+        }
+        this.p95WaitMinutes = waitSamples.isEmpty() ? 0.0 : computePercentile(waitSamples, 0.95);
+        int approxHops = (int) Math.ceil(Math.sqrt(Math.max(1, flights.size())));
+        this.maxHopsRef = Math.max(1, Math.min(8, approxHops));
     }
 
     private static double computeDurationMinutes(Vuelo v) {
@@ -145,5 +167,57 @@ public final class FlightCache {
 
     public double estimateMaxRouteDuration() {
         return maxDuration * 6.0;
+    }
+
+    public double p95TransitMinutes() {
+        return p95TransitMinutes;
+    }
+
+    public double p95WaitMinutes() {
+        return p95WaitMinutes;
+    }
+
+    public double p95RouteCost() {
+        return p95RouteCost;
+    }
+
+    public int maxHopsRef() {
+        return maxHopsRef;
+    }
+
+    private static double computePercentile(double[] values, double percentile) {
+        if (values == null || values.length == 0) {
+            return 0.0;
+        }
+        double[] copy = Arrays.copyOf(values, values.length);
+        Arrays.sort(copy);
+        return interpolatePercentile(copy, percentile);
+    }
+
+    private static double computePercentile(List<Double> values, double percentile) {
+        if (values == null || values.isEmpty()) {
+            return 0.0;
+        }
+        double[] copy = new double[values.size()];
+        for (int i = 0; i < values.size(); i++) {
+            copy[i] = values.get(i);
+        }
+        Arrays.sort(copy);
+        return interpolatePercentile(copy, percentile);
+    }
+
+    private static double interpolatePercentile(double[] sorted, double percentile) {
+        if (sorted.length == 0) {
+            return 0.0;
+        }
+        double clamped = Math.max(0.0, Math.min(1.0, percentile));
+        double position = clamped * (sorted.length - 1);
+        int lower = (int) Math.floor(position);
+        int upper = (int) Math.ceil(position);
+        if (lower == upper) {
+            return sorted[lower];
+        }
+        double fraction = position - lower;
+        return sorted[lower] + fraction * (sorted[upper] - sorted[lower]);
     }
 }

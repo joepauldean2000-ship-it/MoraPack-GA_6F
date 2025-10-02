@@ -25,11 +25,6 @@ import java.util.function.ToDoubleFunction;
 public class GeneticAlgorithm {
     private static final int MINUTES_PER_DAY = 24 * 60;
     private static final double LARGE_PENALTY = 1_000_000.0;
-    private static final double WEIGHT_PUNCTUALITY = 0.45;
-    private static final double WEIGHT_COST = 0.20;
-    private static final double WEIGHT_WAITING = 0.15;
-    private static final double WEIGHT_CAPACITY = 0.10;
-    private static final double WEIGHT_STOPOVERS = 0.10;
     private static final double MIN_MUTATION = 0.04;
     private static final double MAX_MUTATION = 0.15;
 
@@ -243,7 +238,8 @@ public class GeneticAlgorithm {
 
             if (metricsCsv != null) {
                 metricsCsv.logGaStats(new GaStats(generation, stats.best, stats.avg, stats.worst,
-                        stats.feasibleRatio, mutationRate, diversity));
+                        stats.feasibleRatio, mutationRate, diversity,
+                        stats.p95Transit, stats.p95Wait, stats.p95Cost, stats.maxHopsRef));
             }
 
             if (stats.best < globalBestFitness - 1e-6) {
@@ -509,6 +505,7 @@ public class GeneticAlgorithm {
         double sum = 0.0;
         int feasible = 0;
         Chromosome bestChrom = null;
+        FlightCache localCache = null;
         for (Chromosome chromosome : population) {
             double fitness = fitnessFn.applyAsDouble(chromosome);
             chromosome.fitness = fitness;
@@ -523,12 +520,21 @@ public class GeneticAlgorithm {
             if (RoutesRepairer.isFeasible(chromosome, planningState) && Double.isFinite(fitness)) {
                 feasible++;
             }
+            if (localCache == null && chromosome != null) {
+                localCache = chromosome.getCache();
+            }
         }
         stats.best = best;
         stats.worst = worst;
         stats.avg = sum / population.size();
         stats.feasibleRatio = population.isEmpty() ? Double.NaN : ((double) feasible) / population.size();
         stats.bestChromosome = bestChrom != null ? bestChrom : population.get(0);
+        if (localCache != null) {
+            stats.p95Transit = localCache.p95TransitMinutes();
+            stats.p95Wait = localCache.p95WaitMinutes();
+            stats.p95Cost = localCache.p95RouteCost();
+            stats.maxHopsRef = localCache.maxHopsRef();
+        }
         return stats;
     }
 
@@ -697,7 +703,6 @@ public class GeneticAlgorithm {
         double totalWaiting = 0.0;
         double capacityUsage = 0.0;
         double stopovers = 0.0;
-        double slaDelay = 0.0;
         double totalTransit = 0.0;
 
         for (int i = 0; i < genes.length; i++) {
@@ -751,11 +756,6 @@ public class GeneticAlgorithm {
         }
 
         boolean intra = Objects.equals(origenAp.continente, destinoAp.continente);
-        int slaMinutes = (intra ? rules.slaIntraHours : rules.slaInterHours) * 60;
-        if (totalTransit > slaMinutes) {
-            slaDelay = totalTransit - slaMinutes;
-        }
-
         NavigableMap<Long, Integer> timeline = planningState.warehouseTimeline(destinoIata);
         int capacity = destinoAp.capacidad > 0 ? destinoAp.capacidad : 1000;
         int block = Math.max(0, rules.whBlockMin);
@@ -771,30 +771,74 @@ public class GeneticAlgorithm {
             capacityUsage += 1.0; // penalize overflow by increasing load metric
         }
 
-        double punctualityMinutes = totalTransit + slaDelay;
-        double normalizedPunctuality = punctualityMinutes / Math.max(cache.estimateMaxRouteDuration(), slaMinutes);
-        double normalizedCost = totalCost / Math.max(cache.estimateMaxRouteCost(), totalCost + 1);
-        double normalizedWaiting = totalWaiting / (12 * 60.0);
-        double normalizedCapacity = capacityUsage / Math.max(1.0, genes.length);
-        double normalizedStops = stopovers / 6.0;
+        // BEGIN new fitness
+        // Métricas base
+        int slaMinutes = (intra ? rules.slaIntraHours : rules.slaInterHours) * 60;
+        int departureAbs = departure;
+        int arrivalAbs = arrival;
+        double totalTransitMinutes = totalTransit;
+        double totalWaitingMinutes = totalWaiting;
+        double totalCostValue = totalCost;
+        double stopoversCount = stopovers;
+        double capacityUsageSum = capacityUsage;
+        int hops = (int) stopoversCount;
+        double avgLoad = capacityUsageSum / Math.max(1.0, genes.length);
 
-        double fitness = WEIGHT_PUNCTUALITY * normalizedPunctuality
-                + WEIGHT_COST * normalizedCost
-                + WEIGHT_WAITING * normalizedWaiting
-                + WEIGHT_CAPACITY * normalizedCapacity
-                + WEIGHT_STOPOVERS * normalizedStops
-                + (slaDelay / (double) MINUTES_PER_DAY);
+        // Tardanza SOLO si excede SLA
+        int latenessMin = Math.max(0, arrivalAbs - (departureAbs + slaMinutes));
 
-        chromosome.setScheduleWindow(departure, arrival);
-        chromosome.setPunctualityMinutes(totalTransit);
-        chromosome.setSlaDelayMinutes(slaDelay);
-        chromosome.setTotalCost(totalCost);
-        chromosome.setWaitingMinutes(totalWaiting);
-        chromosome.setCapacityUsage(normalizedCapacity);
-        chromosome.setStopovers(stopovers);
+        // Límites dinámicos (usar cache; añade getters si faltan)
+        double p95Transit = Math.max(1, cache.p95TransitMinutes());
+        double p95Wait = Math.max(1, cache.p95WaitMinutes());
+        double p95Cost = Math.max(1, cache.p95RouteCost());
+        int maxHopsRef = Math.max(1, cache.maxHopsRef());
+        // Fallbacks razonables
+        if (p95Transit == 1) {
+            p95Transit = Math.max(cache.estimateMaxRouteDuration(), slaMinutes);
+        }
+        if (p95Wait == 1) {
+            p95Wait = 6 * 60.0;
+        }
+        if (p95Cost == 1) {
+            p95Cost = Math.max(cache.estimateMaxRouteCost(), totalCostValue + 100);
+        }
+
+        // Normalizaciones 0..1 (cap outliers)
+        double latenessS = Math.min(1.0, (double) latenessMin / (double) slaMinutes);
+        double transitS = Math.min(1.0, totalTransitMinutes / p95Transit);
+        double waitS = Math.min(1.0, totalWaitingMinutes / p95Wait);
+        double costS = Math.min(1.0, totalCostValue / p95Cost);
+        double hopsS = Math.min(1.0, (double) hops / (double) maxHopsRef);
+
+        // Capacidad: preferencia en 90% (cuanto más lejos, peor)
+        double targetLoad = 0.90, capSigma = 0.10;
+        double capS = Math.min(1.0, Math.abs(avgLoad - targetLoad) / capSigma);
+
+        // Puntuaciones (menor = mejor)
+        double latenessScore = Math.pow(latenessS, 1.3);
+        double transitScore = transitS * 0.5;
+        double waitScore = waitS;
+        double costScore = costS;
+        double hopsScore = hopsS;
+        double capScore = capS;
+
+        // Pesos (suman ≈ 1)
+        double wLate = 0.40, wCost = 0.20, wWait = 0.15, wCap = 0.10, wHops = 0.10, wTransit = 0.05;
+
+        double fitness = wLate * latenessScore + wCost * costScore + wWait * waitScore
+                + wCap * capScore + wHops * hopsScore + wTransit * transitScore;
+
+        chromosome.setScheduleWindow(departureAbs, arrivalAbs);
+        chromosome.setPunctualityMinutes(totalTransitMinutes);
+        chromosome.setSlaDelayMinutes(latenessMin);
+        chromosome.setTotalCost(totalCostValue);
+        chromosome.setWaitingMinutes(totalWaitingMinutes);
+        chromosome.setCapacityUsage(avgLoad);
+        chromosome.setStopovers(stopoversCount);
         chromosome.clearDirty();
         chromosome.fitness = fitness;
         return fitness;
+        // END new fitness
     }
 
     private static boolean hasFlightCapacity(Vuelo vuelo, PlanningState planningState) {
@@ -859,5 +903,9 @@ public class GeneticAlgorithm {
         double worst;
         double feasibleRatio;
         Chromosome bestChromosome;
+        double p95Transit;
+        double p95Wait;
+        double p95Cost;
+        int maxHopsRef;
     }
 }
