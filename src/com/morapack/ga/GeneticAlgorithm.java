@@ -11,8 +11,6 @@ import java.util.function.ToDoubleFunction;
 public class GeneticAlgorithm {
     private static final int MINUTES_PER_DAY = 24 * 60;
 
-    int routeLength = 5;
-
     private final PlanningState planningState;
     private final SimClock clock;
     private final PlanLogger logger;
@@ -38,6 +36,27 @@ public class GeneticAlgorithm {
             capRest.put(flightKey(v), v.capacidad);
         }
 
+        GraphVuelos graph = new GraphVuelos(vuelosDisponibles);
+        Heuristic greedyByDuration = (pedido, g, st) -> {
+            if (pedido == null || g == null) {
+                return null;
+            }
+            String origin = pedido.hubOrigen;
+            String destination = pedido.destino;
+            if (origin == null || destination == null || origin.equals(destination)) {
+                return null;
+            }
+            List<Vuelo> path = g.shortestPathByDuration(origin, destination, st);
+            if (path.isEmpty()) {
+                return null;
+            }
+            Chromosome chromosome = Chromosome.ofRoute(pedido, path);
+            if (chromosome != null) {
+                chromosome.fitness = Double.NaN;
+            }
+            return chromosome;
+        };
+
         int totalSolicitados = 0;
         int totalAsignados = 0;
         int totalPendientes = 0;
@@ -53,15 +72,15 @@ public class GeneticAlgorithm {
                 int asignadosTotal = 0;
 
                 while (restantes > 0) {
-                    Population pop = new Population(params.popSize);
-                    pop.initialize(vuelosDisponibles, routeLength, p, aeropuertos);
+                    List<Chromosome> initialPopulation = PopulationInitializer.initPopulation(
+                            params.popSize,
+                            greedyByDuration,
+                            Collections.singletonList(p),
+                            graph,
+                            planningState);
 
-                    List<Chromosome> initialPopulation = new ArrayList<>();
-                    for (Chromosome c : pop.getChromosomes()) {
-                        Chromosome copy = copyOf(c);
-                        copy.setPedido(p);
-                        RoutesRepairer.repair(copy);
-                        initialPopulation.add(copy);
+                    if (initialPopulation.isEmpty()) {
+                        break;
                     }
 
                     List<Chromosome> finalPopulation = evolve(initialPopulation, params, businessRules, logger, clock, metricsCsv);
