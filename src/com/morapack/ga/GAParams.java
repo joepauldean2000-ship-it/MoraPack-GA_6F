@@ -10,6 +10,9 @@ public final class GAParams {
     public long cooldownMin = 15;
     public long freezeHorizonMin = 180;
     public double capCriticalThreshold = 0.90;
+    public double weightCost = 0.002;   // Prioridad 1: ajustar desde configuración externa
+    public double weightTime = 0.0015;  // Prioridad 1: ajustar desde configuración externa
+    public double weightDistance = 0.0008; // Prioridad 1: mantener << weightTime por defecto
 
     public enum Priority {
         URGENT,

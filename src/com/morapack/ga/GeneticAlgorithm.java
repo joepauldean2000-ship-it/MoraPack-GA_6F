@@ -29,6 +29,9 @@ public class GeneticAlgorithm {
     private static final double LARGE_PENALTY = 1_000_000.0;
     private static final double MIN_MUTATION = 0.04;
     private static final double MAX_MUTATION = 0.15;
+    private static volatile double COST_WEIGHT = 0.002;   // Prioridad 1: exponer en configuración
+    private static volatile double TIME_WEIGHT = 0.0015;  // Prioridad 1: evitar dominancia
+    private static volatile double DISTANCE_WEIGHT = 0.0008; // Prioridad 1: γ << β por defecto
 
     private static final boolean SINGLE_FILE_BEST_EXPORT =
             Boolean.parseBoolean(System.getProperty("morapack.bestCsv.single", "true"));
@@ -92,6 +95,7 @@ public class GeneticAlgorithm {
         this.metricsCsv = metricsCsv;
         this.currentRules = businessRules;
         this.currentParams = params;
+        syncFitnessWeights(params);
         this.assignmentWriter = assignmentWriter;
         this.assignmentHeaderWritten = false;
         this.totalSolicitados = 0;
@@ -163,6 +167,21 @@ public class GeneticAlgorithm {
         };
     }
 
+    private static void syncFitnessWeights(GAParams params) {
+        if (params == null) {
+            return;
+        }
+        if (params.weightCost >= 0.0) {
+            COST_WEIGHT = params.weightCost;
+        }
+        if (params.weightTime >= 0.0) {
+            TIME_WEIGHT = params.weightTime;
+        }
+        if (params.weightDistance >= 0.0) {
+            DISTANCE_WEIGHT = params.weightDistance;
+        }
+    }
+
     public void runGAForBatch(List<Pedido> batch,
                               PlanningState state,
                               BusinessRules businessRules,
@@ -178,6 +197,7 @@ public class GeneticAlgorithm {
         if (this.cache == null || this.graph == null) {
             throw new IllegalStateException("GA environment not prepared. Call setupExecution first.");
         }
+        syncFitnessWeights(this.currentParams);
 
         Map<String, Integer> capRest = planningState.flightCapacity();
 
@@ -708,6 +728,7 @@ public class GeneticAlgorithm {
         copy.setWaitingMinutes(chromosome.getWaitingMinutes());
         copy.setCapacityUsage(chromosome.getCapacityUsage());
         copy.setStopovers(chromosome.getStopovers());
+        copy.setTotalDistanceKm(chromosome.getTotalDistanceKm());
         double[] srcDur = chromosome.segmentDuration();
         double[] srcWait = chromosome.segmentWaiting();
         double[] srcCost = chromosome.segmentCost();
@@ -736,11 +757,16 @@ public class GeneticAlgorithm {
             double totalCost = best.getTotalCost();
             double totalTransit = best.getPunctualityMinutes();
             double slaDelay = best.getSlaDelayMinutes();
-            double stopovers = best.getStopovers();
             double avgLoad = best.getCapacityUsage();
-            double distKm = -1.0; // TODO: integrate distance metric when available.
+            int hops = best.length();
+            double stopovers = hops > 0 ? Math.max(0, hops - 1) : 0.0;
+            best.setStopovers(stopovers);
+            double distKm = best.getTotalDistanceKm();
+            if (distKm <= 0.0) {
+                distKm = best.computeTotalDistanceKm();
+            }
             int violSla = slaDelay > 0.0 ? 1 : 0;
-            int violCap = 0; // TODO: capture capacity violations once tracked per route.
+            int violCap = 0; // TODO Prioridad 1: capturar violaciones de capacidad por ruta.
             String ruta = best.toPathString();
             long tSim = clock != null ? clock.now() : 0L;
             bestSolutionLogger.logRow(tSim, generation, pedidoId, fitnessValue, totalCost,
@@ -843,6 +869,7 @@ public class GeneticAlgorithm {
         double capacityUsage = 0.0;
         double stopovers = 0.0;
         double totalTransit = 0.0;
+        double totalDistanceKm = 0.0;
 
         for (int i = 0; i < genes.length; i++) {
             int gene = genes[i];
@@ -868,9 +895,11 @@ public class GeneticAlgorithm {
             arrival = segmentArrival;
             totalTransit = Math.max(0, arrival - departure);
             double cost = cache.cost(gene);
+            double distanceKm = cache.distanceKm(gene);
             double loadRatio = computeCapacityLoad(cache.capacity(gene), pedido.cantidad);
             capacityUsage += loadRatio;
             totalCost += cost;
+            totalDistanceKm += distanceKm;
             if (i > 0) {
                 stopovers += 1.0;
             }
@@ -964,8 +993,11 @@ public class GeneticAlgorithm {
         // Pesos (suman ≈ 1)
         double wLate = 0.40, wCost = 0.20, wWait = 0.15, wCap = 0.10, wHops = 0.10, wTransit = 0.05;
 
-        double fitness = wLate * latenessScore + wCost * costScore + wWait * waitScore
+        double baseNormalized = wLate * latenessScore + wCost * costScore + wWait * waitScore
                 + wCap * capScore + wHops * hopsScore + wTransit * transitScore;
+        double weightedCtd = COST_WEIGHT * totalCostValue + TIME_WEIGHT * totalTransitMinutes
+                + DISTANCE_WEIGHT * totalDistanceKm;
+        double fitness = baseNormalized + weightedCtd;
 
         chromosome.setScheduleWindow(departureAbs, arrivalAbs);
         chromosome.setPunctualityMinutes(totalTransitMinutes);
@@ -974,6 +1006,7 @@ public class GeneticAlgorithm {
         chromosome.setWaitingMinutes(totalWaitingMinutes);
         chromosome.setCapacityUsage(avgLoad);
         chromosome.setStopovers(stopoversCount);
+        chromosome.setTotalDistanceKm(totalDistanceKm);
         chromosome.clearDirty();
         chromosome.fitness = fitness;
         return fitness;

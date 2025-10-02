@@ -1,4 +1,5 @@
 package com.morapack.ga;
+import com.morapack.planificador.dominio.GeoUtils;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,8 +29,18 @@ public class DataLoader {
                 String codigo = partes[1].trim();
                 int capacidad = Integer.parseInt(partes[6].trim());
                 String continente = partes[9].trim();
+                double latitud;
+                double longitud;
+                try {
+                    latitud = GeoUtils.parseDms(partes[7]);
+                    longitud = GeoUtils.parseDms(partes[8]);
+                } catch (IllegalArgumentException ex) {
+                    latitud = 0.0;
+                    longitud = 0.0;
+                    System.err.println("[DataLoader] Coordenadas inválidas para " + codigo + ": " + ex.getMessage());
+                }
 
-                Aeropuerto ap = new Aeropuerto(id, codigo, capacidad, continente);
+                Aeropuerto ap = new Aeropuerto(id, codigo, capacidad, continente, latitud, longitud);
                 aeropuertos.put(codigo, ap);
             }
             System.out.println("Aeropuertos cargados: " + aeropuertos.size());

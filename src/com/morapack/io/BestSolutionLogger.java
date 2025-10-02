@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Locale;
 
 /**
  * Utility to append best GA solutions into a single CSV file with a stable header.
@@ -19,6 +20,7 @@ public final class BestSolutionLogger implements Closeable {
     private Path path;
     private PrintWriter writer;
     private boolean headerWritten;
+    private static final Locale CSV_LOCALE = Locale.US;
 
     public BestSolutionLogger(String outputPath) {
         this.outputPath = outputPath != null && !outputPath.isBlank() ? outputPath : "out/best_solutions.csv";
@@ -63,17 +65,24 @@ public final class BestSolutionLogger implements Closeable {
         sb.append(tSim).append(',')
           .append(generation).append(',')
           .append(escape(idPedido)).append(',')
-          .append(fitness).append(',')
-          .append(costoTotal).append(',')
-          .append(tiempoMin).append(',')
-          .append(distKm).append(',')
+          .append(formatDecimal(fitness)).append(',')
+          .append(formatDecimal(costoTotal)).append(',')
+          .append(formatDecimal(tiempoMin)).append(',')
+          .append(formatDecimal(distKm)).append(',')
           .append(violSla).append(',')
           .append(violCap).append(',')
-          .append(escalasProm).append(',')
-          .append(ocupacionProm).append(',')
+          .append(formatDecimal(escalasProm)).append(',')
+          .append(formatDecimal(ocupacionProm)).append(',')
           .append(escape(rutaSerializada));
         writer.println(sb);
         writer.flush();
+    }
+
+    private String formatDecimal(double value) {
+        if (!Double.isFinite(value)) {
+            return "";
+        }
+        return String.format(CSV_LOCALE, "%.6f", value);
     }
 
     private String escape(String value) {

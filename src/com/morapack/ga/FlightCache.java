@@ -1,5 +1,6 @@
 package com.morapack.ga;
 
+import com.morapack.planificador.dominio.GeoUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,6 +21,7 @@ public final class FlightCache {
     private final Map<String, List<Integer>> outgoing;
     private final double[] durationMinutes;
     private final double[] cost;
+    private final double[] distanceKm;
     private final int[] departureMinutes;
     private final int[] arrivalMinutes;
     private final int[] capacity;
@@ -37,6 +39,7 @@ public final class FlightCache {
         this.outgoing = new HashMap<>();
         this.durationMinutes = new double[flights.size()];
         this.cost = new double[flights.size()];
+        this.distanceKm = new double[flights.size()];
         this.departureMinutes = new int[flights.size()];
         this.arrivalMinutes = new int[flights.size()];
         this.capacity = new int[flights.size()];
@@ -51,6 +54,7 @@ public final class FlightCache {
             double duration = computeDurationMinutes(v);
             durationMinutes[i] = duration;
             cost[i] = BASE_COST + duration * COST_PER_MIN;
+            distanceKm[i] = computeDistanceKm(v);
             departureMinutes[i] = v.salidaMin;
             arrivalMinutes[i] = v.llegadaMin;
             capacity[i] = v.capacidad;
@@ -119,6 +123,10 @@ public final class FlightCache {
         return cost[index];
     }
 
+    public double distanceKm(int index) {
+        return distanceKm[index];
+    }
+
     public int departureMinute(int index) {
         return departureMinutes[index];
     }
@@ -169,6 +177,14 @@ public final class FlightCache {
         return maxDuration * 6.0;
     }
 
+    public double estimateMaxRouteDistance() {
+        double max = 0.0;
+        for (double v : distanceKm) {
+            max = Math.max(max, v);
+        }
+        return max <= 0 ? 10_000.0 : max * 6.0;
+    }
+
     public double p95TransitMinutes() {
         return p95TransitMinutes;
     }
@@ -204,6 +220,18 @@ public final class FlightCache {
         }
         Arrays.sort(copy);
         return interpolatePercentile(copy, percentile);
+    }
+
+    private double computeDistanceKm(Vuelo vuelo) {
+        if (vuelo == null) {
+            return 0.0;
+        }
+        Aeropuerto origen = DataLoader.aeropuertos.get(vuelo.origen);
+        Aeropuerto destino = DataLoader.aeropuertos.get(vuelo.destino);
+        if (origen == null || destino == null) {
+            return 0.0;
+        }
+        return GeoUtils.haversine(origen.latitud, origen.longitud, destino.latitud, destino.longitud);
     }
 
     private static double interpolatePercentile(double[] sorted, double percentile) {

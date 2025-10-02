@@ -28,6 +28,7 @@ public class Chromosome {
     private double waitingMinutes;
     private double capacityUsage;
     private double stopovers;
+    private double totalDistanceKm;
     private double[] segmentDuration = new double[0];
     private double[] segmentWaiting = new double[0];
     private double[] segmentCost = new double[0];
@@ -152,6 +153,7 @@ public class Chromosome {
         this.routeCache = null;
         resizeSegmentArrays(length());
         markDirty(0, length() - 1);
+        this.totalDistanceKm = 0.0;
     }
 
     public void swap(int i, int j) {
@@ -163,6 +165,7 @@ public class Chromosome {
         genes[j] = tmp;
         this.routeCache = null;
         markDirty(Math.min(i, j), Math.max(i, j));
+        this.totalDistanceKm = 0.0;
     }
 
     public void reverse(int from, int to) {
@@ -174,6 +177,7 @@ public class Chromosome {
             from++;
             to--;
         }
+        this.totalDistanceKm = 0.0;
     }
 
     public void shuffleSegment(int from, int to, Random random) {
@@ -184,6 +188,7 @@ public class Chromosome {
             int j = from + random.nextInt(i - from + 1);
             swap(i, j);
         }
+        this.totalDistanceKm = 0.0;
     }
 
     public void rotateThree(int a, int b, int c) {
@@ -196,6 +201,7 @@ public class Chromosome {
         genes[c] = tmp;
         this.routeCache = null;
         markDirty(Math.min(a, Math.min(b, c)), Math.max(a, Math.max(b, c)));
+        this.totalDistanceKm = 0.0;
     }
 
     public List<Vuelo> getRoute() {
@@ -227,6 +233,7 @@ public class Chromosome {
         }
         resizeSegmentArrays(length());
         markDirty(0, length() - 1);
+        this.totalDistanceKm = 0.0;
     }
 
     public boolean isStructurallyFeasible() {
@@ -372,6 +379,32 @@ public class Chromosome {
 
     public double getStopovers() {
         return stopovers;
+    }
+
+    public void setTotalDistanceKm(double totalDistanceKm) {
+        this.totalDistanceKm = totalDistanceKm;
+    }
+
+    public double getTotalDistanceKm() {
+        if (totalDistanceKm <= 0.0 && cache != null && genes != null && genes.length > 0) {
+            computeTotalDistanceKm();
+        }
+        return totalDistanceKm;
+    }
+
+    public double computeTotalDistanceKm() {
+        if (cache == null || genes == null) {
+            this.totalDistanceKm = 0.0;
+            return 0.0;
+        }
+        double sum = 0.0;
+        for (int gene : genes) {
+            if (gene >= 0 && gene < cache.size()) {
+                sum += cache.distanceKm(gene);
+            }
+        }
+        this.totalDistanceKm = sum;
+        return sum;
     }
 
     public FlightCache getCache() {
