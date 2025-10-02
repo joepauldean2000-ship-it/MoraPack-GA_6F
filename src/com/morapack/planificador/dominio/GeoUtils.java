@@ -9,7 +9,8 @@ import java.util.regex.Pattern;
  */
 public final class GeoUtils {
     private static final Pattern DMS_PATTERN = Pattern.compile(
-            "(?i)\\s*([0-9]{1,3})[°º]\\s*([0-9]{1,2})['’]?\\s*([0-9]{1,2})(?:\"|”)?\\s*([NSEW])?\\s*");
+        "(?i)\\s*(\\d{1,3})[\\u00B0\\u00BA]\\s*(\\d{1,2})['\\u2019]?\\s*(\\d{1,2})(?:\\\"|\\u201D)?\\s*([NSEW])?\\s*"
+    );
     private static final double EARTH_RADIUS_KM = 6_371.0088;
 
     private GeoUtils() {
