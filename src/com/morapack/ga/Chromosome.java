@@ -1,5 +1,6 @@
 package com.morapack.ga;
 
+import com.morapack.ga.core.PlanningState;
 import java.util.*;
 
 public class Chromosome {
@@ -11,7 +12,7 @@ public class Chromosome {
     }
 
     // Evaluación con todas las reglas que ya cumple ACO
-    public void evaluate(Pedido pedido, Map<String, Aeropuerto> aeropuertos, Map<Integer, Integer> capRest) {
+    public void evaluate(Pedido pedido, Map<String, Aeropuerto> aeropuertos, PlanningState planningState) {
         double horasTotales = 0.0;
         double penalizacion = 0.0;
 
@@ -50,7 +51,7 @@ public class Chromosome {
             horaActual = v.llegadaMin;
 
             // capacidad del vuelo
-            int cap = capRest.getOrDefault(v.id, v.capacidad);
+            int cap = planningState.flightCapacity().getOrDefault(String.valueOf(v.id), v.capacidad);
             if (cap <= 0) penalizacion += 10.0;
 
             // evitar ciclos
