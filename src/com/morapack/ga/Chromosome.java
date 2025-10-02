@@ -378,6 +378,31 @@ public class Chromosome {
         return cache;
     }
 
+    public String toPathString() {
+        List<Vuelo> route = getRoute();
+        if (route.isEmpty()) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        Vuelo first = route.get(0);
+        sb.append(nodeLabel(first != null ? first.origen : null, first != null ? first.id : -1));
+        sb.append("->");
+        sb.append(nodeLabel(first != null ? first.destino : null, first != null ? first.id : -1));
+        for (int i = 1; i < route.size(); i++) {
+            Vuelo vuelo = route.get(i);
+            sb.append("->");
+            sb.append(nodeLabel(vuelo != null ? vuelo.destino : null, vuelo != null ? vuelo.id : -1));
+        }
+        return sb.toString();
+    }
+
+    private String nodeLabel(String code, int fallbackId) {
+        if (code != null && !code.isBlank()) {
+            return code;
+        }
+        return fallbackId >= 0 ? "FL" + fallbackId : "";
+    }
+
     @Override
     public String toString() {
         List<Vuelo> r = getRoute();

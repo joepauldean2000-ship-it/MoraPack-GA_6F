@@ -4,6 +4,7 @@ import com.morapack.ga.core.GaMetricsCsv;
 import com.morapack.ga.core.PlanLogger;
 import com.morapack.ga.core.PlanningState;
 import com.morapack.ga.core.SimClock;
+import com.morapack.io.BestSolutionLogger;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
@@ -29,6 +30,9 @@ public class GeneticAlgorithm {
     private static final double MIN_MUTATION = 0.04;
     private static final double MAX_MUTATION = 0.15;
 
+    private static final boolean SINGLE_FILE_BEST_EXPORT =
+            Boolean.parseBoolean(System.getProperty("morapack.bestCsv.single", "true"));
+
     private final PlanningState planningState;
     private final SimClock clock;
     private final PlanLogger logger;
@@ -38,6 +42,7 @@ public class GeneticAlgorithm {
     private GraphVuelos graph;
     private Heuristic greedyHeuristic;
     private Map<String, Aeropuerto> aeropuertos;
+    private BestSolutionLogger bestSolutionLogger;
     private List<Vuelo> vuelosDisponibles;
     private GaMetricsCsv metricsCsv;
     private BusinessRules currentRules;
@@ -118,6 +123,21 @@ public class GeneticAlgorithm {
             this.assignmentWriter.println("pedido_id,dia,hub_origen,destino,ruta,asignados,pendientes,fitness");
             this.assignmentWriter.flush();
             this.assignmentHeaderWritten = true;
+        }
+
+        if (SINGLE_FILE_BEST_EXPORT) {
+            if (bestSolutionLogger == null) {
+                bestSolutionLogger = new BestSolutionLogger("out/best_solutions.csv");
+            }
+            try {
+                bestSolutionLogger.open();
+            } catch (IOException e) {
+                System.err.println("Failed to open best solution logger: " + e.getMessage());
+                bestSolutionLogger = null;
+            }
+        } else if (bestSolutionLogger != null) {
+            bestSolutionLogger.close();
+            bestSolutionLogger = null;
         }
     }
 
@@ -270,6 +290,10 @@ public class GeneticAlgorithm {
     public void finalizeExecution() {
         if (assignmentWriter != null) {
             assignmentWriter.flush();
+        }
+        if (bestSolutionLogger != null) {
+            bestSolutionLogger.close();
+            bestSolutionLogger = null;
         }
         System.out.println("\n=== Resumen GA ===");
         System.out.println("Pedidos totales: " + pedidosProcesados);
@@ -706,10 +730,27 @@ public class GeneticAlgorithm {
         if (best == null) {
             return;
         }
+        String pedidoId = (pedidoContext != null && pedidoContext.id != null) ? pedidoContext.id : "NA";
+        if (SINGLE_FILE_BEST_EXPORT && bestSolutionLogger != null) {
+            double fitnessValue = best.fitness;
+            double totalCost = best.getTotalCost();
+            double totalTransit = best.getPunctualityMinutes();
+            double slaDelay = best.getSlaDelayMinutes();
+            double stopovers = best.getStopovers();
+            double avgLoad = best.getCapacityUsage();
+            double distKm = -1.0; // TODO: integrate distance metric when available.
+            int violSla = slaDelay > 0.0 ? 1 : 0;
+            int violCap = 0; // TODO: capture capacity violations once tracked per route.
+            String ruta = best.toPathString();
+            long tSim = clock != null ? clock.now() : 0L;
+            bestSolutionLogger.logRow(tSim, generation, pedidoId, fitnessValue, totalCost,
+                    totalTransit, distKm, violSla, violCap, stopovers, avgLoad, ruta);
+            return;
+        }
+
         try {
             Path dir = Paths.get("out");
             Files.createDirectories(dir);
-            String pedidoId = pedidoContext != null ? pedidoContext.id : "NA";
             Path file = dir.resolve("best_solution_gen" + generation + "_pedido_" + pedidoId + ".csv");
             try (PrintWriter pw = new PrintWriter(Files.newBufferedWriter(file))) {
                 pw.println("pedido_id,flight_id,origen,destino,dep_min,arr_min");
